@@ -109,9 +109,8 @@ This site **solves that problem** by:
 4️⃣ **Chatbot Page** – Talk to an AI-powered support bot for motivation.  
 5️⃣ **Dashboard Page (Tableau Integration)** – Displays progress insights.  
 6️⃣ **Profile Page** – Customize UI, see streak history, settings.  
-7️⃣ **Register Page** - Allow users to register
-8️⃣ **Login Page** – Allow user to login.
-
+7️⃣ **Login Page** – Allow user to login.
+8️⃣ **Register Page** - Allow users to register
 
 
 ## **Mockups**
@@ -203,8 +202,8 @@ The database consists of **six tables**, with structured relationships between u
 ✅ Connect **habit streaks to plant evolution**  
 ✅ Integrate **Tableau for habit insights & progress tracking**  
 ✅ Store **habit & chatbot interaction data in MySQL (via Knex.js)**  
-✅ Implement **secure API endpoints with JWT authentication** 
-✅ Add **multiuser system** (friends & social support features)
+✅ Add **multiuser system** (friends & social support features)<br>
+✅ Implement **secure API endpoints with JWT authentication**  
 ✅ **Bug fixes & final UI adjustments**  
 ✅ **Prepare demo & user testing**
 
