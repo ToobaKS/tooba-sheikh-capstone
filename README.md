@@ -7,7 +7,6 @@ As users complete habits, their **plant grows**, and they can **leave messages f
 
 This site makes habit tracking **fun, rewarding, and personal**, encouraging long-term engagement through **gamification and self-reflection**.
 
----
 
 ## Problem Space
 
@@ -20,7 +19,6 @@ This site **solves that problem** by:
 ✅ Providing **emotional support via a chatbot**.  
 ✅ Offering **data-driven insights with Tableau** to track habits effectively.
 
----
 
 ## User Profile
 
@@ -46,8 +44,6 @@ This site **solves that problem** by:
 - It should be **easy to use** and **not overwhelming**.
 - Data visualization should be **simple and actionable** using Tableau.
 
----
-
 ## Features
 
 ### 🎯 MVP Features (Minimum Viable Product)
@@ -60,7 +56,6 @@ This site **solves that problem** by:
 ✅ **Chatbot Feature** – Provides positive reinforcement and motivation.  
 ✅ **Multiuser Support** – Users can **view & encourage** friends' progress.
 
----
 
 ## Implementation
 
@@ -98,7 +93,7 @@ This site **solves that problem** by:
 
 ---
 
-## APIs
+### APIs
 
 🔹 **LottieFiles API** – Animated plant growth effects.  
 🔹 **Web Speech API (Optional)** – If adding voice notes for the time capsule.  
@@ -119,13 +114,16 @@ This site **solves that problem** by:
 8️⃣ **Register Page** - Allow users to register
 
 
-### **Mockups**
+## **Mockups**
 
 Landing Page:
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/1.png)
 
 Home Page:
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/2.png)
+
+
+## **End Points**
 
 ### 📡 Authentication Endpoints
 
@@ -174,7 +172,7 @@ Home Page:
 
 ---
 
-# 📊 Data & Relationships
+## 📊 Data & Relationships
 
 The database consists of **six tables**, with structured relationships between users, habits, time capsules, chatbot interactions, and friendships.
 
@@ -186,9 +184,8 @@ The database consists of **six tables**, with structured relationships between u
 - **Users ↔ Chatbot Conversations** → Each user has **multiple chatbot interactions** (`One-to-Many`).
 - **Users ↔ Friends** → Users can **send & receive** friend requests (`Many-to-Many`).
 
----
 
-# 📅 Roadmap - Sprint Plan (3 Weeks)
+## 📅 Roadmap - Sprint Plan (3 Weeks)
 
 ### Week 1 – Core Features, Setup & Gamification
 
