@@ -109,7 +109,7 @@ This site **solves that problem** by:
 4️⃣ **Chatbot Page** – Talk to an AI-powered support bot for motivation.  
 5️⃣ **Dashboard Page (Tableau Integration)** – Displays progress insights.  
 6️⃣ **Profile Page** – Customize UI, see streak history, settings.  
-7️⃣ **Login Page** – Allow user to login.
+7️⃣ **Login Page** – Allow user to login.<br>
 8️⃣ **Register Page** - Allow users to register
 
 
