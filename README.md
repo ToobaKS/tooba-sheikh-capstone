@@ -115,12 +115,12 @@ This site **solves that problem** by:
 
 ## **Mockups**
 
-Landing Page:
-&nbsp;
+#### Landing Page:
+
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/1.png)
 
-Home Page:
-&nbsp;
+#### Home Page:
+
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/2.png)
 
 
