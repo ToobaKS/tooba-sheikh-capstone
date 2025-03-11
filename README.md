@@ -91,7 +91,6 @@ This site **solves that problem** by:
 - Lottie / Rive (for cute animated plant growth)
 - LocalStorage (to cache data and reduce database reads)
 
----
 
 ### APIs
 
@@ -100,7 +99,7 @@ This site **solves that problem** by:
 🔹 **Gemini API** – Chatbot functionality.  
 🔹 **Tableau REST API** – Data visualization for progress tracking.
 
----
+
 
 ### **Sitemap**
 
@@ -117,9 +116,11 @@ This site **solves that problem** by:
 ## **Mockups**
 
 Landing Page:
+&nbsp;
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/1.png)
 
 Home Page:
+&nbsp;
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/2.png)
 
 
@@ -170,7 +171,7 @@ Home Page:
 | ------- | ----------- | ---------------------------------- |
 | **GET** | `/progress` | Get user’s habit stats for Tableau |
 
----
+
 
 ## 📊 Data & Relationships
 
@@ -206,7 +207,7 @@ The database consists of **six tables**, with structured relationships between u
 ✅ **Bug fixes & final UI adjustments**  
 ✅ **Prepare demo & user testing**
 
----
+
 
 ## Future Implementations
 
@@ -217,4 +218,4 @@ The database consists of **six tables**, with structured relationships between u
 🌿 Allowing users to visit each other garden and leaving messages
 📷 AR mode to see your plant in real life
 
----
+
