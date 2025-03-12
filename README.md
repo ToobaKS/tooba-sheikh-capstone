@@ -116,7 +116,7 @@ This site **solves that problem** by:
 ## **Mockups**
 
 #### Logo:
-![Sitemap](./habit-tracker-frontend/src/assets/logos/logo-4.png)
+<img src="./habit-tracker-frontend/src/assets/logos/logo-4.png" alt="logo" width=100px height=100px>
 
 #### Login Page:
 
