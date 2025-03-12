@@ -115,13 +115,13 @@ This site **solves that problem** by:
 
 ## **Mockups**
 
-#### Landing Page:
+#### Login Page:
 
-![Sitemap](./habit-tracker-frontend/src/assets/mockups/1.png)
+![Sitemap](./habit-tracker-frontend/src/assets/mockups/Login-Register-Page.png)
 
 #### Home Page:
 
-![Sitemap](./habit-tracker-frontend/src/assets/mockups/2.png)
+![Sitemap](./habit-tracker-frontend/src/assets/mockups/Home-Page.png)
 
 
 ## **End Points**
