@@ -115,6 +115,9 @@ This site **solves that problem** by:
 
 ## **Mockups**
 
+#### Logo:
+![Sitemap](./habit-tracker-frontend/src/assets/logos/logo-4.png)
+
 #### Login Page:
 
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/Login-Register-Page.png)
