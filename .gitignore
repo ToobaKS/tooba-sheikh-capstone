@@ -23,5 +23,17 @@ dist-ssr
 *.sln
 *.sw?
 
+*.env
+
+
+#gitignore
+
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 .env
 
