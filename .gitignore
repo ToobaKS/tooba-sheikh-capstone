@@ -35,4 +35,4 @@ dist-ssr
 
 .env
 
-habit-tracker-backend/.env
+habit-tracker-backend/ .env
