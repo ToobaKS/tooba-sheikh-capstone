@@ -2,10 +2,10 @@ export async function up(knex) {
   await knex.schema.createTable("habits", (table) => {
     table.increments("id").primary();
     table
-      .integer("category_id")
+      .integer("user_category_id")
       .unsigned()
       .references("id")
-      .inTable("category")
+      .inTable("user_categories")
       .onDelete("CASCADE");
     table.string("habit_name").notNullable();
     table.date("start_date").notNullable();
