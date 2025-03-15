@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export default async function seed(knex) {
+export async function seed(knex) {
   await knex("user_categories").del();
 
   await knex("user_categories").insert([
