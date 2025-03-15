@@ -1,15 +1,18 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.up = function(knex) {
-  
-};
+export async function up(knex) {
+  await knex.schema.createTable("habits", (table) => {
+    table.increments("id").primary();
+    table
+      .integer("category_id")
+      .unsigned()
+      .references("id")
+      .inTable("category")
+      .onDelete("CASCADE");
+    table.string("habit_name").notNullable();
+    table.date("start_date").notNullable();
+    table.integer("streak").defaultTo(0);
+  });
+}
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.down = function(knex) {
-  
-};
+export async function down(knex) {
+  await knex.schema.dropTable("habits");
+}

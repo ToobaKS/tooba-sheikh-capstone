@@ -1,15 +1,18 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.up = function(knex) {
-  
-};
+export async function up(knex) {
+  await knex.schema.createTable("time_capsule", (table) => {
+    table.increments("id").primary();
+    table
+      .integer("user_id")
+      .unsigned()
+      .references("id")
+      .inTable("users")
+      .onDelete("CASCADE");
+    table.text("message").notNullable();
+    table.timestamp("created_date").defaultTo(knex.fn.now());
+    table.timestamp("open_date").notNullable();
+  });
+}
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.down = function(knex) {
-  
-};
+export async function down(knex) {
+  await knex.schema.dropTable("time_capsule");
+}
