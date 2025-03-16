@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import userRoutes from "./routes/users-routes.js"
 
 const app = express();
 
@@ -10,7 +11,14 @@ app.use(cors());
 
 app.use(express.json());
 
-//app.use("/", warehouseRoutes);
+app.use("/user", userRoutes);
+app.use("/category", userRoutes);
+// app.use("/habit", userRoutes);
+// app.use("/user", userRoutes);
+// app.use("/user", userRoutes);
+// app.use("/user", userRoutes);
+// app.use("/user", userRoutes);
+// app.use("/user", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`running at http://localhost:${PORT}`);
