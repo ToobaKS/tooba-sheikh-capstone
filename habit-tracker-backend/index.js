@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", userRoutes);
-app.use("/category", userRoutes);
+app.use("/user-category", userRoutes);
 // app.use("/habit", userRoutes);
 // app.use("/user", userRoutes);
 // app.use("/user", userRoutes);
