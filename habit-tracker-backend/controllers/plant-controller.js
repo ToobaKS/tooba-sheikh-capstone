@@ -117,3 +117,49 @@ export const getUserPlantPhaseByCategoryName = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+/**
+ * @desc Update user's plant phase for a category
+ * @route PATCH /api/plants/user-category/name/:category_name
+ * @access Protected (JWT Required)
+ */
+export const updateUserPlantPhase = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { category_name } = req.params;
+    const { new_phase } = req.body; // New phase number
+
+    if (!new_phase) {
+      return res.status(400).json({ message: "New plant phase is required" });
+    }
+
+    // Find the category ID by name
+    const category = await knex("category")
+      .where({ name: category_name })
+      .select("id")
+      .first();
+
+    if (!category) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    // Check if the user has this category assigned
+    const userCategory = await knex("user_categories")
+      .where({ user_id: userId, category_id: category.id })
+      .first();
+
+    if (!userCategory) {
+      return res.status(404).json({ message: "Category not assigned to user" });
+    }
+
+    // Update plant phase
+    await knex("user_categories")
+      .where({ user_id: userId, category_id: category.id })
+      .update({ plant_phase: new_phase });
+
+    res.json({ message: "Plant phase updated successfully", new_phase });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
