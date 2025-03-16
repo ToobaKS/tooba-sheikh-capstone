@@ -2,6 +2,8 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import userRoutes from "./routes/users-routes.js"
+import userCategoryRoutes from "./routes/user-category-routes.js"
+import categoryRoutes from "./routes/category-routes.js";
 
 const app = express();
 
@@ -12,8 +14,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", userRoutes);
-app.use("/user-category", userRoutes);
-// app.use("/habit", userRoutes);
+app.use("/user-category", userCategoryRoutes);
+app.use("/categories", categoryRoutes);
 // app.use("/user", userRoutes);
 // app.use("/user", userRoutes);
 // app.use("/user", userRoutes);
