@@ -160,3 +160,5 @@ export const getCategoryProgress = async (req, res) => {
       .json({ error: "Error fetching progress", details: error.message });
   }
 };
+
+

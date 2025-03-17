@@ -4,23 +4,13 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-/**
- * Fetch completed habit logs for the current or previous weeks.
- * Users can pass `weekOffset` as a query parameter to navigate to past weeks.
- */
+// ✅ Log habit completion for today
+router.post("/:habit_id", protect, habitLogController.logHabitCompletion);
+
+// ✅ Get all habit logs for the user
+router.get("/", protect, habitLogController.getHabitLogs);
+
+// ✅ Get habit logs for a specific week (supports `weekOffset` query param)
 router.get("/week", protect, habitLogController.getHabitLogsByWeek);
 
-/**
- * Log a habit completion.
- * Requires `habit_id` in the request body.
- */
-router.post("/", protect, habitLogController.logHabitCompletion);
-
-/**
- * Delete a habit log entry.
- * Requires `log_id` as a URL parameter.
- */
-router.delete("/:id", protect, habitLogController.deleteHabitLog);
-
 export default router;
-;
