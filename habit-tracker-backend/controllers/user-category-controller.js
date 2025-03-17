@@ -114,3 +114,49 @@ export const deleteUserCategory = async (req, res) => {
     });
   }
 };
+
+/**
+ * Get user's progress for a specific category.
+ */
+export const getCategoryProgress = async (req, res) => {
+  const user_id = req.user.id;
+  const { category_id } = req.params;
+
+  try {
+    // Count total habits in the category
+    const totalHabits = await knex("habits")
+      .where({ user_category_id: category_id })
+      .count("id as count")
+      .first();
+
+    // Count completed habits for today
+    const completedHabits = await knex("habit_log")
+      .join("habits", "habit_log.habit_id", "habits.id")
+      .where("habits.user_category_id", category_id)
+      .whereRaw("DATE(habit_log.logged_at) = CURDATE()")
+      .count("habit_log.id as count")
+      .first();
+
+    // Calculate % completion
+    const completionRate =
+      totalHabits.count > 0
+        ? (completedHabits.count / totalHabits.count) * 100
+        : 0;
+
+    // Get total watering days
+    const wateringDays = await knex("watering_log")
+      .where({ user_category_id: category_id, user_id })
+      .count("id as count")
+      .first();
+
+    res.status(200).json({
+      completionRate,
+      wateringDays: wateringDays.count,
+      needsWatering: completionRate >= 60, // If they reached the % today
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Error fetching progress", details: error.message });
+  }
+};
