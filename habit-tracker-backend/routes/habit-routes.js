@@ -2,10 +2,6 @@ import express from "express";
 import * as habitController from "../controllers/habit-controller.js";
 import { protect } from "../middleware/authMiddleware.js";
 
-import express from "express";
-import * as habitController from "../controllers/habit-controller.js";
-import { protect } from "../middleware/authMiddleware.js";
-
 const router = express.Router();
 
 router

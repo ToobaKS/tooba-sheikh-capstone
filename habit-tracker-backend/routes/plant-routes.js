@@ -4,20 +4,24 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", plantController.getAllPlants); // Get all plant types
+// Get all plants
+router.get("/", plantController.getAllPlants);
 
-router.get("/:id/phases", plantController.getPlantPhases); // Get all phases for a plant
+// Get plant phases by plant ID
+router.get("/:id/phases", plantController.getPlantPhases);
 
+// Get the current plant phase for a user’s category
 router.get(
-  "/user-category/name/:category_name",
+  "/user-category/:category_id",
   protect,
-  plantController.getUserPlantPhaseByCategoryName
-); // Get plant phase from user category
+  plantController.getCurrentPlantPhase
+);
 
+// Upgrade plant phase if watering streak is met
 router.patch(
-  "/user-category/name/:category_name",
+  "/user-category/:category_id",
   protect,
-  plantController.updateUserPlantPhase
-); // Update plant phase
+  plantController.upgradePlantPhase
+);
 
 export default router;

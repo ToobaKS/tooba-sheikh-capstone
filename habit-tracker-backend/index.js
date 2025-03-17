@@ -3,14 +3,14 @@ import express from "express";
 import cors from "cors";
 
 // Importing routes
-import userRoutes from "./routes/users-routes.js";
+import userRoutes from "./routes/user-routes.js";
 import userCategoryRoutes from "./routes/user-category-routes.js";
 import categoryRoutes from "./routes/category-routes.js";
 import plantRoutes from "./routes/plant-routes.js";
 import habitRoutes from "./routes/habit-routes.js";
 import habitLogRoutes from "./routes/habit-log-routes.js";
-import wateringRoutes from "./routes/watering-routes.js";
-import chatbotRoutes from "./routes/chatbot-routes.js";
+import wateringRoutes from "./routes/watering-log-routes.js";
+import chatbotRoutes from "./routes/chat-log-routes.js";
 import timeCapsuleRoutes from "./routes/time-capsule-routes.js";
 
 const app = express();
@@ -38,5 +38,5 @@ app.use((req, res) => {
 
 // Start Server
 app.listen(PORT, () => {
-  console.log(`✅ Server is running at: http://localhost:${PORT}`);
+  console.log(`Server is running at: http://localhost:${PORT}`);
 });
