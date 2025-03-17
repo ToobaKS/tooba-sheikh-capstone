@@ -6,7 +6,7 @@ const knex = initKnex(configuration);
 /**
  * Create a new time capsule entry (Protected Route)
  */
-export const createTimeCapsule = async (req, res) => {
+const createTimeCapsule = async (req, res) => {
   const { message, unlock_date } = req.body;
   const user_id = req.user.id; // Extract user ID from JWT token
 
@@ -35,7 +35,7 @@ export const createTimeCapsule = async (req, res) => {
 /**
  * Get all time capsules for the logged-in user (Protected Route)
  */
-export const getUserTimeCapsules = async (req, res) => {
+const getUserTimeCapsules = async (req, res) => {
   const user_id = req.user.id; // Extract user ID from JWT token
 
   try {
@@ -53,7 +53,7 @@ export const getUserTimeCapsules = async (req, res) => {
 /**
  * Get a specific time capsule by ID (Protected Route)
  */
-export const getTimeCapsuleById = async (req, res) => {
+const getTimeCapsuleById = async (req, res) => {
   const user_id = req.user.id; // Extract user ID from JWT token
   const { id } = req.params;
 
@@ -86,7 +86,7 @@ export const getTimeCapsuleById = async (req, res) => {
 /**
  * Delete a time capsule by ID (Protected Route)
  */
-export const deleteTimeCapsule = async (req, res) => {
+const deleteTimeCapsule = async (req, res) => {
   const user_id = req.user.id; // Extract user ID from JWT token
   const { id } = req.params;
 
@@ -109,3 +109,5 @@ export const deleteTimeCapsule = async (req, res) => {
       .json({ error: "Error deleting time capsule", details: error.message });
   }
 };
+
+export { createTimeCapsule, getUserTimeCapsules, getTimeCapsuleById, deleteTimeCapsule};
