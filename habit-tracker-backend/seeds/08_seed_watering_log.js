@@ -5,7 +5,7 @@
 export async function seed(knex) {
   await knex("watering_log").del();
   await knex("watering_log").insert([
-    // 🌿 User 1 (Tooba) - Watering Fitness Plant (Bamboo)
+    // User 1 (Tooba) - Watering Fitness Plant (Bamboo)
     {
       id: 1,
       user_id: 1,
@@ -21,7 +21,7 @@ export async function seed(knex) {
       timestamp: "2025-03-16 09:30:00",
     },
 
-    // 🌱 User 1 (Tooba) - Watering Productivity Plant (Bonsai)
+    //User 1 (Tooba) - Watering Productivity Plant (Bonsai)
     {
       id: 3,
       user_id: 1,
@@ -37,7 +37,7 @@ export async function seed(knex) {
       timestamp: "2025-03-17 12:00:00",
     },
 
-    // 💰 User 2 (John) - Watering Finance Plant (Money Tree)
+    // User 2 (Alex) - Watering Finance Plant (Money Tree)
     {
       id: 5,
       user_id: 2,

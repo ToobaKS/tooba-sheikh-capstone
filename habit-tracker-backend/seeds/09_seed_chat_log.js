@@ -5,7 +5,7 @@
 export async function seed(knex) {
   await knex("chat_log").del();
   await knex("chat_log").insert([
-    // 🌿 User 1 (Tooba) - Chatting about Fitness & Productivity
+    // User 1 (Tooba) - Chatting about Fitness & Productivity
     {
       id: 1,
       user_id: 1,
@@ -23,7 +23,7 @@ export async function seed(knex) {
       timestamp: "2025-03-16 10:15:00",
     },
 
-    // 💰 User 2 (John) - Chatting about Finance & Self-Care
+    // User 2 (Alex) - Chatting about Finance & Self-Care
     {
       id: 3,
       user_id: 2,

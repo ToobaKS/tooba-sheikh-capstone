@@ -5,7 +5,7 @@
 export async function seed(knex) {
   await knex("plant_phases").del();
   await knex("plant_phases").insert([
-    // 🌿 Bamboo (Fitness)
+    // Bamboo (Fitness)
     {
       id: 1,
       plant_id: 1,
@@ -25,7 +25,7 @@ export async function seed(knex) {
       image_url: "/images/bamboo_full.png",
     },
 
-    // 🌱 Bonsai Tree (Productivity)
+    //Bonsai Tree (Productivity)
     {
       id: 4,
       plant_id: 2,
@@ -45,7 +45,7 @@ export async function seed(knex) {
       image_url: "/images/bonsai_full.png",
     },
 
-    // 💰 Money Tree (Finance)
+    //Money Tree (Finance)
     {
       id: 7,
       plant_id: 3,
@@ -65,7 +65,7 @@ export async function seed(knex) {
       image_url: "/images/moneytree_full.png",
     },
 
-    // 🌹 Rose (Self-Care/Love)
+    //Rose (Self-Care/Love)
     {
       id: 10,
       plant_id: 4,

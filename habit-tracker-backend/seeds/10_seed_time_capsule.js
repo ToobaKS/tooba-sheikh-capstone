@@ -5,7 +5,7 @@
 export async function seed(knex) {
   await knex("time_capsule").del();
   await knex("time_capsule").insert([
-    // 🌿 User 1 (Tooba) - Fitness & Productivity Goals
+    //User 1 (Tooba) - Fitness & Productivity Goals
     {
       id: 1,
       user_id: 1,
@@ -23,7 +23,7 @@ export async function seed(knex) {
       is_unlocked: false,
     },
 
-    // 💰 User 2 (John) - Finance & Self-Care Reflections
+    //User 2 (Alex) - Finance & Self-Care Reflections
     {
       id: 3,
       user_id: 2,
