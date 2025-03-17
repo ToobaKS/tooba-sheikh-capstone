@@ -6,6 +6,7 @@ import userCategoryRoutes from "./routes/user-category-routes.js"
 import categoryRoutes from "./routes/category-routes.js";
 import plantRoutes from "./routes/plant-routes.js";
 
+
 const app = express();
 
 const PORT = process.env.PORT || 5050;
