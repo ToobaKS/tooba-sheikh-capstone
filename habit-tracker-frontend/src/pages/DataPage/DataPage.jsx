@@ -1,11 +1,11 @@
-import "./ChatBotPage.scss";
+import "./DataPage.scss";
 
 function DataPage() {
   return (
     <>
-      <div>ChatBotPage</div>
+      <div>DataPage</div>
     </>
   );
 }
 
-export default ChatBotPage;
+export default DataPage;
