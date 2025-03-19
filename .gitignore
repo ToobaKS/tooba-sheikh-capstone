@@ -36,3 +36,5 @@ dist-ssr
 .env
 
 habit-tracker-backend/ .env
+
+additional_resources

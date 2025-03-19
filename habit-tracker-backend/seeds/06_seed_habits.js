@@ -5,7 +5,7 @@
 export async function seed(knex) {
   await knex("habits").del();
   await knex("habits").insert([
-    // 🌿 User 1 (Tooba) - Fitness (Bamboo) Category
+    // User 1 (Tooba) - Fitness (Bamboo) Category
     {
       id: 1,
       user_category_id: 1,
@@ -25,7 +25,7 @@ export async function seed(knex) {
       description: "Do a 10-minute stretching routine.",
     },
 
-    // 🌱 User 1 (Tooba) - Productivity (Bonsai) Category
+    // User 1 (Tooba) - Productivity (Bonsai) Category
     {
       id: 4,
       user_category_id: 2,
@@ -39,7 +39,7 @@ export async function seed(knex) {
       description: "Write down 3 important tasks for the day.",
     },
 
-    // 💰 User 2 (John) - Finance (Money Tree) Category (Randomly Chosen)
+    // User 2 (Alex) - Finance (Money Tree) Category (Randomly Chosen)
     {
       id: 6,
       user_category_id: 5,

@@ -5,7 +5,7 @@
 export async function seed(knex) {
   await knex("user_categories").del();
   await knex("user_categories").insert([
-    // 🌿 User 1 (Tooba) - All Categories
+    // User 1 (Tooba) - All Categories
     {
       id: 1,
       user_id: 1,
@@ -43,7 +43,7 @@ export async function seed(knex) {
       watering_needed: 5,
     }, // Self-Care (Rose)
 
-    // 💰 User 2 (Alex) - Only Finance Category
+    // User 2 (Alex) - Only Finance Category
     {
       id: 5,
       user_id: 2,
