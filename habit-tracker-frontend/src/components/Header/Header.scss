@@ -6,8 +6,9 @@
   background-color: $background-color-two;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   padding: 1rem;
+  padding-top: 32px;
   position: fixed;
   left: 0;
   top: 0;
@@ -16,32 +17,27 @@
   &--closed {
     width: 80px;
 
-    .sidebar__logo-text {
+    .sidebar__logo-text,
+    .sidebar__menu {
       display: none;
     }
 
     .sidebar__link {
-      text-align: center;
+      justify-content: center;
       padding: 1rem 0;
     }
-  }
-
-  &__toggle {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-bottom: 1rem;
   }
 
   &__logo {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
     margin-bottom: 2rem;
 
     &-img {
       width: 50px;
+      transition: transform 0.3s ease-in-out;
     }
 
     &-text {
@@ -55,7 +51,7 @@
   &__nav {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     width: 100%;
 
     .sidebar__link {
@@ -68,7 +64,7 @@
       text-decoration: none;
       color: $font-color-two;
       border-radius: 10px;
-      transition: background 0.3s ease-in-out;
+      transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
 
       &:hover {
         background-color: $accent-color-two;
