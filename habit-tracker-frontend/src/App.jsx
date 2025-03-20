@@ -1,5 +1,10 @@
 import "./App.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -14,7 +19,18 @@ import DataPage from "./pages/DataPage/DataPage";
 function App() {
   return (
     <Router>
-      <Header />
+      <AppContent />
+    </Router>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const hideSidebar = ["/", "/login", "/register"].includes(location.pathname);
+
+  return (
+    <>
+      {!hideSidebar && <Header />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -26,7 +42,7 @@ function App() {
         <Route path="/data" element={<DataPage />} />
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
 }
 

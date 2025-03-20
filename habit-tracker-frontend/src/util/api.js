@@ -4,7 +4,7 @@ const BASE_URL = "http://localhost:8080"; // Update if needed
 
 // Attach token to headers if it exists
 const getAuthHeaders = () => {
-  const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
+  const token = localStorage.getItem("token");
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
@@ -26,7 +26,7 @@ export const loginUser = async (credentials) => {
     const token = resp.data.token;
     
     if (token) {
-      localStorage.setItem("token", token); // Store token after login
+      localStorage.setItem("token", token);
     }
 
     return resp.data;
