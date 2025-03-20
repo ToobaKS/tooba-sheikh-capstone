@@ -1,0 +1,58 @@
+@use "../../styles/partials/global" as *;
+
+.header {
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    padding-bottom: 6.875rem;
+  }
+
+  @include desktop {
+    padding: 1rem 8.125rem;
+    padding-bottom: 7rem;
+  }
+
+  &__logo {
+    padding: 1.5rem;
+
+    @include tablet {
+      padding: 1rem 0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 5.5rem;
+
+    @include tablet {
+      padding: 0;
+      gap: 1rem;
+    }
+  }
+  &__link {
+    color: coral;
+    font-size: 0.8125rem;
+    padding: 0.5rem 3rem;
+    border-radius: 20px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+    &.active {
+      background-color: lightcoral;
+    }
+
+    @include tablet {
+      padding: 0.5rem 1rem;
+    }
+  }
+}
