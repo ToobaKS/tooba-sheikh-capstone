@@ -1,6 +1,6 @@
-import "./Footer.scss";
+import "./AccessCard.scss";
 
-function Footer() {
+function AccessCard() {
   return (
     <>
       <div>
@@ -10,4 +10,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default AccessCard;

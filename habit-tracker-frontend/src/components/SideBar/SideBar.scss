@@ -63,18 +63,19 @@
       color: $accent-color-four;
       background-color: $font-color-three;
     }
+
+    &--active {
+      color: $accent-color-four;
+      background-color: $font-color-three;
+    }
   }
 
   &__icon {
     min-width: 24px;
     scale: 1.2;
 
-    &--plant{
+    &--plant {
       scale: 1.3;
-    }
-    
-    &:hover {
-      transform: 0.3s ease-in-out, scale(1.2);
     }
   }
 

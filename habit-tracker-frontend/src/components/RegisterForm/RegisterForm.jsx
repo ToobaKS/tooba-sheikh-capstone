@@ -1,6 +1,6 @@
-import "./Footer.scss";
+import "./RegisterForm.scss";
 
-function Footer() {
+function RegisterForm() {
   return (
     <>
       <div>
@@ -10,4 +10,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default RegisterForm;

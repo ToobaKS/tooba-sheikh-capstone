@@ -46,7 +46,6 @@ function AppContent() {
             <Route path="/chatbot" element={<ChatBotPage />} />
             <Route path="/data" element={<DataPage />} />
           </Routes>
-          <Footer />
         </div>
       )}
     </>

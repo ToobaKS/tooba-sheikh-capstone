@@ -1,6 +1,6 @@
-import "./Footer.scss";
+import "./Button.scss";
 
-function Footer() {
+function Button() {
   return (
     <>
       <div>
@@ -10,4 +10,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Button;

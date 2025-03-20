@@ -1,9 +1,15 @@
 import "./LandingPage.scss";
+import Footer from "../../components/Footer/Footer";
+import LandingPageHero from "../../components/LandingPageHero/LandingPageHero";
 
 function LandingPage() {
   return (
     <>
-      <div>LandingPage</div>
+      <LandingPageHero />
+      <main>
+        <div>LandingPage</div>
+      </main>
+      <Footer />
     </>
   );
 }

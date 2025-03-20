@@ -1,6 +1,6 @@
-import "./Footer.scss";
+import "./LandingPageHero.scss";
 
-function Footer() {
+function LandingPageHero() {
   return (
     <>
       <div>
@@ -10,4 +10,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default LandingPageHero;

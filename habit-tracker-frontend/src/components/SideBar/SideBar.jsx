@@ -49,7 +49,7 @@ function SideBar() {
           {isOpen && <p className="sidebar__menu">Habits</p>}
         </NavLink>
         <NavLink
-          to="/home"
+          to="/time-capsule"
           className={({ isActive }) =>
             isActive ? "sidebar__link sidebar__link--active" : "sidebar__link"
           }
@@ -74,7 +74,7 @@ function SideBar() {
           {isOpen && <p className="sidebar__menu">Time Capsule</p>}
         </NavLink>
         <NavLink
-          to="/home"
+          to="/chatbot"
           className={({ isActive }) =>
             isActive ? "sidebar__link sidebar__link--active" : "sidebar__link"
           }
@@ -101,7 +101,7 @@ function SideBar() {
           {isOpen && <p className="sidebar__menu">AI Buddy</p>}
         </NavLink>
         <NavLink
-          to="/home"
+          to="/data"
           className={({ isActive }) =>
             isActive ? "sidebar__link sidebar__link--active" : "sidebar__link"
           }

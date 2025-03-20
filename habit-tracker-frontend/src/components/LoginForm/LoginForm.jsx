@@ -1,6 +1,6 @@
-import "./Footer.scss";
+import "./LoginForm.scss";
 
-function Footer() {
+function LoginForm() {
   return (
     <>
       <div>
@@ -10,4 +10,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default LoginForm;

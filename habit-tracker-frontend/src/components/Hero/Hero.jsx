@@ -1,6 +1,6 @@
-import "./Footer.scss";
+import "./Hero.scss";
 
-function Footer() {
+function Hero() {
   return (
     <>
       <div>
@@ -10,4 +10,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Hero;
