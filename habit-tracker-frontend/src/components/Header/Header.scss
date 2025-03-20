@@ -1,58 +1,83 @@
 @use "../../styles/partials/global" as *;
 
-.header {
-  background-color: brown;
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: $background-color-two;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  padding: 1rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease-in-out;
 
-  @include tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    padding-bottom: 6.875rem;
+  &--closed {
+    width: 80px;
+
+    .sidebar__logo-text {
+      display: none;
+    }
+
+    .sidebar__link {
+      text-align: center;
+      padding: 1rem 0;
+    }
   }
 
-  @include desktop {
-    padding: 1rem 8.125rem;
-    padding-bottom: 7rem;
+  &__toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
   }
 
   &__logo {
-    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
 
-    @include tablet {
-      padding: 1rem 0;
+    &-img {
+      width: 50px;
+    }
+
+    &-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family: "Averia Serif Libre", serif;
+      color: $font-color-two;
     }
   }
 
   &__nav {
     display: flex;
-    gap: 1rem;
-    padding-bottom: 5.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
 
-    @include tablet {
-      padding: 0;
-      gap: 1rem;
-    }
-  }
-  &__link {
-    color: coral;
-    font-size: 0.8125rem;
-    padding: 0.5rem 3rem;
-    border-radius: 20px;
+    .sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: $font-color-two;
+      border-radius: 10px;
+      transition: background 0.3s ease-in-out;
 
-    &:hover {
-      text-decoration: underline;
-    }
-    &.active {
-      background-color: lightcoral;
-    }
+      &:hover {
+        background-color: $accent-color-two;
+      }
 
-    @include tablet {
-      padding: 0.5rem 1rem;
+      &--active {
+        background-color: $primary-card-color;
+        color: $font-color-one;
+      }
     }
   }
 }
