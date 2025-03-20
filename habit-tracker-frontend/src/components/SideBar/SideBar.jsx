@@ -32,7 +32,7 @@ function SideBar() {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            className="sidebar__icon"
+            className="sidebar__icon sidebar__icon--plant"
           >
             <g
               fill="none"
@@ -71,7 +71,7 @@ function SideBar() {
               color="currentColor"
             />
           </svg>
-          {isOpen && <p className="sidebar__menu">Habits</p>}
+          {isOpen && <p className="sidebar__menu">Time Capsule</p>}
         </NavLink>
         <NavLink
           to="/home"

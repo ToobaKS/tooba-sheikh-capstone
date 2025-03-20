@@ -1,15 +1,13 @@
 @use "../../styles/partials/global" as *;
 
 .sidebar {
-  background-color: $primary-card-color;
+  background-color: $accent-color-four;
   width: 250px;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
   padding: 1rem;
   padding-top: 24px;
   transition: width 0.3s ease-in-out;
+  @include display-flex(column, start, start);
 
   &--closed {
     align-items: center;
@@ -20,18 +18,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 5px;
 
     &-img {
       cursor: pointer;
       width: 50px;
-
     }
 
     &-text {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
       font-family: "Averia Serif Libre", serif;
-      color: $font-color-two;
+      color: $font-color-three;
       white-space: nowrap;
       overflow: hidden;
       width: auto;
@@ -48,28 +46,41 @@
   .sidebar__link {
     display: flex;
     justify-content: start;
-    align-items: center;
-    gap: 10px;
+    align-items: end;
+    gap: 20px;
     padding: 0.8rem;
-    font-size: 1.1rem;
-    font-weight: 500;
+    margin-top: 8px;
     text-decoration: none;
     color: $font-color-two;
     border-radius: 10px;
     transition: 0.3s ease-in-out, padding 0.3s ease-in-out;
-    color: $font-color-one;
+    color: $font-color-three;
+    font-family: "Comfortaa";
+    font-weight: 600;
+    font-size: 17px;
 
     &:hover {
-      background-color: $accent-color-two;
+      color: $accent-color-four;
+      background-color: $font-color-three;
     }
   }
 
   &__icon {
     min-width: 24px;
+    scale: 1.2;
+
+    &--plant{
+      scale: 1.3;
+    }
+    
+    &:hover {
+      transform: 0.3s ease-in-out, scale(1.2);
+    }
   }
 
   &__menu {
     white-space: nowrap; /* Prevents sudden text break */
     overflow: hidden;
+    transition: max-width 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 }
