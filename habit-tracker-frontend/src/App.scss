@@ -1,5 +1,10 @@
 @use "./styles/partials/global" as *;
 
-body{
-    background-color: $background-color-two;
+body {
+  background-color: $background-color-two;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
 }
