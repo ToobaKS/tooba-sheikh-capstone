@@ -1,38 +1,52 @@
 import "./WhySection.scss";
-import plantShelf from "../../assets/images/10.png";
+import plantShelf from "../../assets/images/13.png";
+import LandingPageCard from "../LandingPageCard/LandingPageCard";
 
 function WhySection() {
   return (
-    <div className="what-section">
-      <div className="what-section__info">
-        <h2 className="what-section__title">What is Rootinely</h2>
-        <p className="what-section__para">
-          Rootinely is a habit-tracking app designed to make building routines
-          feel natural, fun, and rewarding. Instead of boring checklists,
-          Rootinely helps your habits grow—just like plants. <br /> <br />
-          With a progress-focused system, AI-powered motivation, and a
-          beautiful, calming design, Rootinely turns your daily habits into a
-          journey of growth.
+    <div className="why-section">
+      <div className="why-section__info">
+        <h2 className="why-section__title">Why Rootinely?</h2>
+        <p className="why-section__para">
+          Most habit trackers focus on streaks—miss a day, and it’s like you’ve
+          failed. But life isn’t that rigid. Rootinely is different:
         </p>
-        <ul className="what-section__list">
-          <li className="what-section__list-item">Track habits effortlessly</li>
-          <li className="what-section__list-item">
-            Stay motivated with AI Buddy
-          </li>
-          <li className="what-section__list-item">
-            Celebrate progress, not just streaks
-          </li>
-        </ul>
-        <p className="what-section__catch-phrase">
-          Because good habits take root over time.
+        <div className="why-section__main">
+          <div className="why-section__card">
+            <LandingPageCard
+              title="Grow, don’t grind"
+              content="Instead of punishing missed days, Rootinely
+            encourages continuous growth"
+            />
+            <LandingPageCard
+              title="AI Buddy"
+              content=" Need a nudge? A pep talk? Your AI
+            buddy has your back."
+            />
+          </div>
+          <div className="why-section__image-container">
+            <img
+              className="why-section__image"
+              src={plantShelf}
+              alt="plant shelf"
+            />
+          </div>
+          <div className="why-section__card">
+            <LandingPageCard
+              title="Track without the guilt"
+              content="Focus on your progress, not just hitting
+            perfect streaks."
+            />
+            <LandingPageCard
+              title="A calming, beautiful experience"
+              content="Because habit-tracking should feel
+            rewarding, not stressful."
+            />
+          </div>
+        </div>
+        <p className="why-section__catch-phrase">
+          Rootinely isn’t just about habits—it’s about growth.
         </p>
-      </div>
-      <div className="what-section__image-container">
-        <img
-          className="what-section__image"
-          src={plantShelf}
-          alt="plant shelf"
-        />
       </div>
     </div>
   );

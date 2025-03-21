@@ -3,10 +3,10 @@
 .what-section {
   margin: 16px;
   padding: 24px 16px;
-  border-radius: 40px;
+  border-radius: 20px;
   background-color: $font-color-three;
   font-family: "Nunito";
-  @include display-flex(row, space-around, start);
+  @include display-flex(row, space-around, center);
 
   &__info {
     padding-top: 32px;
@@ -48,6 +48,6 @@
 
   &__image {
     padding-right: 40px;
-    width: 75%;
+    width: 60%;
   }
 }

@@ -1,1 +1,53 @@
 @use "../../styles/partials/global" as *;
+
+.why-section {
+  margin: 16px;
+  padding: 24px 40px;
+  border-radius: 20px;;
+  text-align: center;
+  background-color: $accent-color-nine;
+  font-family: "Nunito";
+  @include display-flex(row, space-around, center);
+
+  &__info {
+    padding-top: 32px;
+  }
+
+  &__title {
+    @include font(30px, 25px, 700);
+    padding-bottom: 30px;
+  }
+
+  &__para {
+    padding-bottom: 15px;
+    @include font(20px, 30px, 500);
+  }
+
+  &__main {
+    padding: 40px 40px;
+    padding-bottom: 0px;
+    @include display-flex(row, space-evenly, center);
+  }
+
+  &__card {
+    @include display-flex(column, center, stretch);
+  }
+
+  &__catch-phrase {
+    padding-bottom: 10px;
+    font-family: "Nunito Italic";
+    color: $accent-color-ten;
+    @include font(30px, 45px, 500);
+  }
+
+  &__image-container {
+    text-align: center;
+    margin-bottom: 75px;
+    width: 50%;
+  }
+
+  &__image {
+    //padding-right: 40px;
+    width: 75%;
+  }
+}

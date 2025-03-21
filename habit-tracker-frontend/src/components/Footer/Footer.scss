@@ -1,1 +1,12 @@
 @use "../../styles/partials/global" as *;
+
+.footer {
+  background-color: $font-color-three;
+  border-radius: 20px;;
+  margin: 16px;
+  text-align: center;
+  color: $secondary-card-color-one;
+  padding: 2.5rem 0;
+  font-family: "Nunito";
+  font-size: 15px;
+}

@@ -3,8 +3,8 @@ import "./Footer.scss";
 function Footer() {
   return (
     <>
-      <div>
-        <p>© 2024 Rootinely</p>
+      <div className="footer">
+        © 2025 Rootinely
       </div>
     </>
   );
