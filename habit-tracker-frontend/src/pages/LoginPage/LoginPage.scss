@@ -1,0 +1,12 @@
+@use "../../styles/partials/global" as *;
+
+.login {
+  background-image: url("../../assets/backgrounds/2.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

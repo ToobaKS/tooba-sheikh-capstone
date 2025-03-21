@@ -1,9 +1,22 @@
 import "./LandingPageHero.scss";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logos/logo-8.png";
 import plant1 from "../../assets/images/plants-1.png";
 import SButton from "../Button/Button";
 
 function LandingPageHero() {
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/login");
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    navigate("/register");
+  };
+
   return (
     <>
       <div className="landing-hero">
@@ -22,8 +35,8 @@ function LandingPageHero() {
               </h2>
             </div>
             <div className="landing-hero__buttons">
-              <SButton path="/login" label="Login"/>
-              <SButton path="/register" label="Register" />
+              <SButton label="Login" handleSubmit={handleLogin}/>
+              <SButton label="Register" handleSubmit={handleRegister}/>
             </div>
           </div>
         </div>

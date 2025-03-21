@@ -1,12 +1,11 @@
 import "./AccessCard.scss";
 
-function AccessCard() {
+function AccessCard({title, children}) {
   return (
-    <>
-      <div>
-        <p>© 2024 Rootinely</p>
-      </div>
-    </>
+    <div className="access-card">
+      <h2 className="access-card__title">Rootinely</h2>
+      {children}
+    </div>
   );
 }
 

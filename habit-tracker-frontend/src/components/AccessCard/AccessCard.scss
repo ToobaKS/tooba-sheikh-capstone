@@ -1,1 +1,18 @@
 @use "../../styles/partials/global" as *;
+
+.access-card {
+  background-color: $font-color-one;
+  padding: 2rem;
+  border-radius: 40px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  min-width: 400px;
+  text-align: center;
+
+  &__title {
+    font-family: "Comfortaa";
+    @include font(30px, 35px, 900);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #2f3c2e;
+  }
+}

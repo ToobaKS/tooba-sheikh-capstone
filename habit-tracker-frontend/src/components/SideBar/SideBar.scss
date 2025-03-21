@@ -43,7 +43,7 @@
     width: 100%;
   }
 
-  .sidebar__link {
+  &__link {
     display: flex;
     justify-content: start;
     align-items: end;
@@ -80,7 +80,7 @@
   }
 
   &__menu {
-    white-space: nowrap; /* Prevents sudden text break */
+    white-space: nowrap;
     overflow: hidden;
     transition: max-width 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
