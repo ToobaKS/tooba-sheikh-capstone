@@ -1,9 +1,34 @@
 import "./AccessCard.scss";
+import { Link, useNavigate } from "react-router-dom";
 
-function AccessCard({title, children}) {
+function AccessCard({ children }) {
+  const navigate = useNavigate();
+
   return (
     <div className="access-card">
-      <h2 className="access-card__title">Rootinely</h2>
+      <div className="access-card__header">
+        <Link className="access-card__link" to="/">
+          <h2 className="access-card__title">Rootinely</h2>
+        </Link>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          className="access-card__icon"
+          onClick={() => navigate(-1)}
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M15 6s-6 4.419-6 6s6 6 6 6"
+            color="currentColor"
+          />
+        </svg>
+      </div>
       {children}
     </div>
   );

@@ -1,5 +1,4 @@
 import "./LoginForm.scss";
-
 function LoginForm() {
   return (
     <form className="login-form">
@@ -13,7 +12,7 @@ function LoginForm() {
         Login
       </button>
       <p className="login-form__footer">
-        Don't have an account? <a href="/register">Sign Up</a>
+        Don't have an account? <a className="login-form__footer--link" href="/register">Sign Up</a>
       </p>
     </form>
   );
