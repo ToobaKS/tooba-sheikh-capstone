@@ -1,13 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import "./Button.scss";
 
-function Button() {
+function SButton({ handleSubmit }) {
+  const navigate = useNavigate();
+
   return (
-    <>
-      <div>
-        <p>© 2024 Rootinely</p>
-      </div>
-    </>
+    <button className="button-link" onClick={() => navigate(path)}>
+      {label}
+    </button>
   );
 }
 
-export default Button;
+export default SButton;
