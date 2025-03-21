@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Button.scss";
 
-function SButton({ handleSubmit }) {
+function SButton({ path, label }) {
   const navigate = useNavigate();
 
   return (

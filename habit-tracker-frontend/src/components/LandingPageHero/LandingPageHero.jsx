@@ -22,8 +22,8 @@ function LandingPageHero() {
               </h2>
             </div>
             <div className="landing-hero__buttons">
-              <SButton />
-              <SButton />
+              <SButton path="/login" label="Login"/>
+              <SButton path="/register" label="Register" />
             </div>
           </div>
         </div>
