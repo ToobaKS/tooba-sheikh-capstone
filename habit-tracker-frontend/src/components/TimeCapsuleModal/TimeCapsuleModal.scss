@@ -1,41 +1,16 @@
 @use "../../styles/partials/global" as *;
 
 .capsule-modal {
-  background-color: $background-color-one;
-  border-radius: 1.25rem;
-  padding: 2rem;
   width: 100%;
   max-width: 500px;
-  position: relative;
-  font-family: "Comfortaa", sans-serif;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-
-  &__close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    color: $accent-color-ten;
-    cursor: pointer;
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: rotate(90deg);
-    }
-  }
 
   &__title {
-    border: 1px solid red; // for testing
-    font-size: 1.4rem;
-    color: $accent-color-ten;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
   }
 
   &__message {
-    font-size: 1rem;
-    color: $font-color-two;
     background-color: $secondary-card-color-two;
     padding: 1rem;
     border-radius: 10px;
@@ -43,12 +18,29 @@
   }
 
   &__unlock {
-    font-size: 0.95rem;
     color: $accent-color-eleven;
 
     span {
       font-weight: 600;
       color: $accent-color-ten;
     }
+  }
+
+  &__countdown {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: $accent-color-eleven;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $accent-color-ten;
   }
 }

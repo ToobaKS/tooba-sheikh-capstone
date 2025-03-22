@@ -1,5 +1,5 @@
 import "./TimeCapsuleBottle.scss";
-import bottleImg from "../../assets/images/43.png";
+import bottleImg from "../../assets/images/44.png";
 
 function TimeCapsuleBottle({ onClick }) {
     return (

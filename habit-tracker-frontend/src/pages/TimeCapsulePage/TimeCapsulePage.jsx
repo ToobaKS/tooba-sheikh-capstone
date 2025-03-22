@@ -95,7 +95,7 @@ function TimeCapsulePage() {
       <Modal
         isOpen={!!selectedCapsule}
         onRequestClose={closeModal}
-        className="capsule-modal"
+        className="capsule-modal-container"
         overlayClassName="capsule-modal__overlay"
       >
         {selectedCapsule && (
