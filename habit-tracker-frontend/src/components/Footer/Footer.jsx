@@ -3,7 +3,9 @@ import "./Footer.scss";
 function Footer() {
   return (
     <>
-      <div>Footer</div>
+      <div className="footer">
+        © 2025 Rootinely
+      </div>
     </>
   );
 }

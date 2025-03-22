@@ -5,7 +5,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import Header from "./components/Header/Header";
+import SideBar from "./components/SideBar/SideBar";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import HomePage from "./pages/HomePage/HomePage";
@@ -30,18 +30,24 @@ function AppContent() {
 
   return (
     <>
-      {!hideSidebar && <Header />}
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/habit/:categoryId" element={<HabitPage />} />
-        <Route path="/time-capsule" element={<TimeCapsulePage />} />
-        <Route path="/chatbot" element={<ChatBotPage />} />
-        <Route path="/data" element={<DataPage />} />
-      </Routes>
-      <Footer />
+      {hideSidebar ? (
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      ) : (
+        <div className="app-container">
+          <SideBar />
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/habit/:categoryId" element={<HabitPage />} />
+            <Route path="/time-capsule" element={<TimeCapsulePage />} />
+            <Route path="/chatbot" element={<ChatBotPage />} />
+            <Route path="/data" element={<DataPage />} />
+          </Routes>
+        </div>
+      )}
     </>
   );
 }
