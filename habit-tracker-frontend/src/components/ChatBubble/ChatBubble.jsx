@@ -1,16 +1,24 @@
+
 import "./ChatBubble.scss";
 
 function ChatBubble({ sender, message, timestamp }) {
+  const isUser = sender === "user";
+
   return (
-    <div
-      className={`chat-bubble ${
-        sender === "user" ? "chat-bubble--user" : "chat-bubble--bot"
-      }`}
-    >
-      <p className="chat-bubble__text">{message}</p>
-      <span className="chat-bubble__timestamp">{timestamp}</span>
+    <div className={`chat-bubble ${isUser ? "chat-bubble--user" : "chat-bubble--bot"}`}>
+      <p className="chat-bubble__message">{message}</p>
+      <span className="chat-bubble__timestamp">
+        {new Date(timestamp).toLocaleString("en-US", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+          month: "short",
+          day: "numeric",
+        })}
+      </span>
     </div>
   );
 }
 
 export default ChatBubble;
+

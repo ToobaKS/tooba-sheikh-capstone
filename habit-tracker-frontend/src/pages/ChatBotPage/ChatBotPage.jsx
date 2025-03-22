@@ -12,7 +12,19 @@ function ChatBotPage() {
     const loadHistory = async () => {
       try {
         const history = await fetchChatHistory();
-        setChatHistory(history);
+        const formatted = history.flatMap((entry) => [
+          {
+            sender: "user",
+            message: entry.user_message,
+            timestamp: entry.timestamp,
+          },
+          {
+            sender: "bot",
+            message: entry.bot_response,
+            timestamp: entry.timestamp,
+          },
+        ]);
+        setChatHistory(formatted);
       } catch (error) {
         console.error("Error loading chat history:", error);
       }
@@ -23,26 +35,26 @@ function ChatBotPage() {
   const handleSend = async () => {
     if (!newMessage.trim()) return;
 
-    const userMessage = {
-      sender: "user",
-      message: newMessage,
-      timestamp: new Date().toLocaleString(),
-    };
-    setChatHistory((prev) => [...prev, userMessage]);
-
     try {
-      const botResponse = await chatWithBot(newMessage);
+      const response = await chatWithBot(newMessage);
+
+      const userMessage = {
+        sender: "user",
+        message: response.user_message,
+        timestamp: response.timestamp,
+      };
+
       const botMessage = {
         sender: "bot",
-        message: botResponse.message,
-        timestamp: new Date().toLocaleString(),
+        message: response.bot_response,
+        timestamp: response.timestamp,
       };
-      setChatHistory((prev) => [...prev, botMessage]);
+
+      setChatHistory((prev) => [...prev, userMessage, botMessage]);
+      setNewMessage("");
     } catch (error) {
       console.error("Error sending message to bot:", error);
     }
-
-    setNewMessage("");
   };
 
   return (
@@ -50,7 +62,7 @@ function ChatBotPage() {
       <h1 className="chatbot-page__title">AI Buddy</h1>
       <ChatCard>
         <div className="chatbot-page__chat-window">
-          {chatHistory.map((msg, index) => (
+          {[...chatHistory].reverse().map((msg, index) => (
             <ChatBubble
               key={index}
               sender={msg.sender}
@@ -78,4 +90,3 @@ function ChatBotPage() {
 }
 
 export default ChatBotPage;
-

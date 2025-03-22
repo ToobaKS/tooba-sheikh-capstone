@@ -1,0 +1,34 @@
+.chat-bubble {
+    max-width: 60%;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    font-family: "Comfortaa", sans-serif;
+    position: relative;
+  
+    &__message {
+      margin: 0;
+      color: #333;
+    }
+  
+    &__timestamp {
+      font-size: 0.7rem;
+      color: #888;
+      margin-top: 0.4rem;
+      display: block;
+      text-align: right;
+    }
+  
+    &--user {
+      background-color: #c0d2b1;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+  
+    &--bot {
+      background-color: #f1c8b3;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+  }
+  
