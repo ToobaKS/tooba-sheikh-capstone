@@ -11,6 +11,7 @@ export function up(knex) {
       .references("id")
       .inTable("users")
       .onDelete("CASCADE");
+    table.text("title").notNullable();
     table.text("message").notNullable();
     table.date("unlock_date").notNullable();
     table.boolean("is_unlocked").defaultTo(false);

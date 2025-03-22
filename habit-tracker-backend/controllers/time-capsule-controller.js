@@ -7,8 +7,8 @@ const knex = initKnex(configuration);
  * Create a new time capsule entry (Protected Route)
  */
 const createTimeCapsule = async (req, res) => {
-  const { message, unlock_date } = req.body;
-  const user_id = req.user.id; // Extract user ID from JWT token
+  const { title, message, unlock_date } = req.body;
+  const user_id = req.user.id;
 
   if (!message || !unlock_date) {
     return res
@@ -17,13 +17,14 @@ const createTimeCapsule = async (req, res) => {
   }
 
   try {
-    const [id] = await knex("time_capsules").insert({
+    const [id] = await knex("time_capsule").insert({
       user_id,
+      title,
       message,
       unlock_date,
     });
 
-    const newTimeCapsule = await knex("time_capsules").where({ id }).first();
+    const newTimeCapsule = await knex("time_capsule").where({ id }).first();
     res.status(201).json(newTimeCapsule);
   } catch (error) {
     res
@@ -36,10 +37,10 @@ const createTimeCapsule = async (req, res) => {
  * Get all time capsules for the logged-in user (Protected Route)
  */
 const getUserTimeCapsules = async (req, res) => {
-  const user_id = req.user.id; // Extract user ID from JWT token
+  const user_id = req.user.id; 
 
   try {
-    const timeCapsules = await knex("time_capsules")
+    const timeCapsules = await knex("time_capsule")
       .where({ user_id })
       .orderBy("unlock_date", "asc");
     res.status(200).json(timeCapsules);
@@ -54,11 +55,11 @@ const getUserTimeCapsules = async (req, res) => {
  * Get a specific time capsule by ID (Protected Route)
  */
 const getTimeCapsuleById = async (req, res) => {
-  const user_id = req.user.id; // Extract user ID from JWT token
+  const user_id = req.user.id;
   const { id } = req.params;
 
   try {
-    const timeCapsule = await knex("time_capsules")
+    const timeCapsule = await knex("time_capsule")
       .where({ id, user_id })
       .first();
 
@@ -91,7 +92,7 @@ const deleteTimeCapsule = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const timeCapsule = await knex("time_capsules")
+    const timeCapsule = await knex("time_capsule")
       .where({ id, user_id })
       .first();
 
@@ -101,7 +102,7 @@ const deleteTimeCapsule = async (req, res) => {
         .json({ error: "Time capsule not found or does not belong to you." });
     }
 
-    await knex("time_capsules").where({ id }).del();
+    await knex("time_capsule").where({ id }).del();
     res.status(200).json({ message: "Time capsule deleted successfully." });
   } catch (error) {
     res

@@ -1,0 +1,109 @@
+@use "../../styles/partials/global" as *;
+
+.time-capsule-page {
+  padding: $mobile-padding;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background-color-two;
+
+  @media (min-width: $tablet-breakpoint) {
+    padding: $tablet-padding;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    padding: $desktop-padding;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-family: "Averia Serif Libre", serif;
+    margin-bottom: 1.5rem;
+    color: $font-color-two;
+  }
+
+  .capsule-form {
+    background-color: $primary-card-color;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    input,
+    textarea {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 1px solid $accent-color-seven;
+      font-family: "Comfortaa", sans-serif;
+      font-size: 1rem;
+      background-color: $background-color-three;
+      color: $font-color-two;
+      resize: none;
+
+      &:focus {
+        outline: none;
+        border-color: $accent-color-eleven;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    button {
+      background-color: $accent-color-ten;
+      color: $font-color-one;
+      border: none;
+      border-radius: 10px;
+      padding: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($accent-color-ten, 5%);
+      }
+
+      @media (min-width: $tablet-breakpoint) {
+        width: $button-width-tablet;
+        align-self: center;
+      }
+    }
+  }
+
+  &__bottles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.capsule-modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  // .capsule-modal {
+  //   background-color: $background-color-three;
+  //   padding: 2rem;
+  //   border-radius: 1.25rem;
+  //   width: 90%;
+  //   max-width: 500px;
+  //   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  //   font-family: "Comfortaa", sans-serif;
+  // }
+  

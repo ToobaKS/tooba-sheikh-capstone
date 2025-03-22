@@ -2,8 +2,16 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+
+import bcrypt from "bcryptjs";
+
 export async function seed(knex) {
   await knex("users").del();
+
+  const hashedPassword1 = await bcrypt.hash("tooba123", 10);
+  const hashedPassword2 = await bcrypt.hash("alex123", 10);
+  const hashedPassword3 = await bcrypt.hash("candice123", 10);
+
   await knex("users").insert([
     {
       id: 1,
@@ -11,7 +19,7 @@ export async function seed(knex) {
       last_name: "Sheikh",
       username: "tooba",
       email: "tooba@example.com",
-      password: "hashedpassword1",
+      password: hashedPassword1,
     },
     {
       id: 2,
@@ -19,7 +27,7 @@ export async function seed(knex) {
       last_name: "Doe",
       username: "alexdoe",
       email: "alex@example.com",
-      password: "hashedpassword2",
+      password: hashedPassword2,
     },
     {
       id: 3,
@@ -27,7 +35,8 @@ export async function seed(knex) {
       last_name: "Doe",
       username: "candicedoe",
       email: "candice@example.com",
-      password: "hashedpassword3",
+      password: hashedPassword3,
     },
   ]);
 }
+
