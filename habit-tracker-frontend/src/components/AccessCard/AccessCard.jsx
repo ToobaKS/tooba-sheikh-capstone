@@ -21,9 +21,9 @@ function AccessCard({ children }) {
           <path
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
             d="M15 6s-6 4.419-6 6s6 6 6 6"
             color="currentColor"
           />

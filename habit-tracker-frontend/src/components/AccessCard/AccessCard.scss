@@ -30,7 +30,7 @@
     font-size: 1.8rem;
 
     &:hover {
-      color: darken($secondary-card-color-one, 20%);
+      color: $accent-color-ten;
     }
   }
 
@@ -54,7 +54,7 @@
     cursor: pointer; 
 
     &:hover {
-      color: darken($secondary-card-color-one, 20%);
+      color: $accent-color-ten;
       animation: wiggle 0.5s ease-in-out infinite;
     }
   }

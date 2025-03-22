@@ -2,10 +2,12 @@ import "./RegisterForm.scss";
 import { registerUser } from "../../util/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 function RegisterForm() {
   const navigate = useNavigate();
 
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -69,14 +71,23 @@ function RegisterForm() {
         value={formData.email}
         onChange={handleChange}
       />
-      <input
-        type="password"
-        placeholder="Password"
-        className="register-form__input"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-      />
+      <div className="register-form__password-wrapper">
+        <input
+          type={showPassword ? "text" : "password"}
+          name="password"
+          placeholder="Password"
+          className="register-form__input"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <button
+          type="button"
+          className="register-form__toggle"
+          onClick={() => setShowPassword((prev) => !prev)}
+        >
+          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+        </button>
+      </div>
       <button
         type="submit"
         className="register-form__button"

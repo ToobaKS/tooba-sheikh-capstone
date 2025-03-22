@@ -13,11 +13,28 @@
     font-family: "Comfortaa";
     font-size: 0.9rem;
     min-width: 300px;
+    border: 2px solid $accent-color-eigth; 
 
     &:focus{
         outline: none;
-        border: 2px solid $secondary-card-color-one; 
+        border: 2px solid $accent-color-eleven;
     }
+  }
+
+  &__password-wrapper {
+    position: relative;
+  }
+  
+  &__toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 0.85rem;
+    color: $accent-color-eleven;
+    cursor: pointer;
   }
 
   &__button {
@@ -33,7 +50,7 @@
     transition: background 0.2s ease-in-out;
 
     &:hover {
-      background-color: darken($secondary-card-color-one, 20%);
+      background-color: $accent-color-ten;
     }
   }
 
@@ -42,7 +59,7 @@
     font-weight: 500;
 
     &--link {
-      color: darken($secondary-card-color-one, 20%);
+      color: $accent-color-ten;
       text-decoration: none;
       font-weight: 900;
       &:hover {
