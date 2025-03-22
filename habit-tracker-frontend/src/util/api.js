@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080"; // Update if needed
+const BASE_URL = "http://localhost:8080";
 
 // Attach token to headers if it exists
 const getAuthHeaders = () => {
@@ -15,7 +15,7 @@ export const registerUser = async (userData) => {
     return resp.data;
   } catch (error) {
     console.error(error);
-    alert("Failed to register user.");
+    console.log("Failed to register user.");
     throw error;
   }
 };
@@ -32,7 +32,7 @@ export const loginUser = async (credentials) => {
     return resp.data;
   } catch (error) {
     console.error(error);
-    alert("Login failed. Check your credentials.");
+    console.log("Login failed. Check your credentials.");
     throw error;
   }
 };
