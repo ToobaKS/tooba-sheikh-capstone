@@ -1,0 +1,19 @@
+@use "../../styles/partials/global" as *;
+
+.category-card {
+  background-color: $secondary-card-color-two;
+  border-radius: 1.25rem;
+  padding: 1rem 1.5rem;
+  min-width: 140px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 600;
+  color: $accent-color-ten;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

@@ -1,0 +1,22 @@
+@use "../../styles/partials/global" as *;
+
+.categories-page {
+    width: 100%;
+  padding: 2rem;
+  text-align: center;
+
+  &__title {
+    font-family: "Averia Serif Libre", serif;
+    font-size: 2rem;
+    color: $accent-color-ten;
+    margin-bottom: 2rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
