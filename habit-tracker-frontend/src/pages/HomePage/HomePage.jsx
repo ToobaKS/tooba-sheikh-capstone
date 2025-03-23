@@ -1,35 +1,48 @@
-import { useState } from "react";
-import CategoryCard from "../../components/CategoryCard/CategoryCard";
-import AddCategoryButton from "../../components/AddCategoryButton/AddCategoryButton";
-import "./HomePage.scss";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchUserCategories } from "../../util/api";
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import "./HomePage.scss";
 
-function CategoriesPage() {
-  const [categories, setCategories] = useState(["Fitness", "Wellness", "Study"]);
+function HomePage() {
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
-  const handleAddCategory = () => {
-    const newCategory = prompt("Enter new category name:");
-    if (newCategory) {
-      setCategories((prev) => [...prev, newCategory]);
-    }
-  };
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const data = await fetchUserCategories();
+        setCategories(data);
+      } catch (err) {
+        console.error("Failed to load user categories:", err);
+      }
+    };
+    loadCategories();
+  }, []);
 
-  const handleCategoryClick = (name) => {
-    navigate(`/habits/${name.toLowerCase()}`);
+  const handleClick = (categoryName) => {
+    navigate(`/habit/${categoryName}`);
   };
 
   return (
     <main className="categories-page">
       <h1 className="categories-page__title">Your Categories</h1>
-      <div className="categories-page__list">
-        {categories.map((cat, index) => (
-          <CategoryCard key={index} name={cat} onClick={() => handleCategoryClick(cat)} />
+      <div className="categories-page__grid">
+        {categories.map((category) => (
+          <CategoryCard
+            key={category.category_id}
+            name={category.name}
+            plantPhase={category.plant_phase}
+            onClick={() => handleClick(category.name)}
+          />
         ))}
-        <AddCategoryButton onClick={handleAddCategory} />
+        <div className="category-card category-card--add" onClick={() => console.log("Add new category")}>
+          <span className="category-card__plus">+</span>
+        </div>
       </div>
     </main>
   );
 }
 
-export default CategoriesPage;
+export default HomePage;
+

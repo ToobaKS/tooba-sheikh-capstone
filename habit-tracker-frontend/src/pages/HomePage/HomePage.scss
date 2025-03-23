@@ -1,22 +1,22 @@
 @use "../../styles/partials/global" as *;
 
 .categories-page {
-    width: 100%;
-  padding: 2rem;
-  text-align: center;
+  padding: $mobile-padding;
+  background-color: $background-color-two;
+  width:100%;
 
   &__title {
-    font-family: "Averia Serif Libre", serif;
     font-size: 2rem;
-    color: $accent-color-ten;
+    font-family: "Averia Serif Libre", serif;
     margin-bottom: 2rem;
+    text-align: center;
+    color: $font-color-two;
   }
 
-  &__list {
+  &__grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
-    align-items: center;
   }
 }

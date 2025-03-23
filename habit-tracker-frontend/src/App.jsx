@@ -41,7 +41,7 @@ function AppContent() {
           <SideBar />
           <Routes>
             <Route path="/home" element={<HomePage />} />
-            <Route path="/habit/:categoryId" element={<HabitPage />} />
+            <Route path="/habit/:categoryName" element={<HabitPage />} />
             <Route path="/time-capsule" element={<TimeCapsulePage />} />
             <Route path="/chatbot" element={<ChatBotPage />} />
             <Route path="/data" element={<DataPage />} />

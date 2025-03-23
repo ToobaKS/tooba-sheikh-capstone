@@ -7,7 +7,7 @@
   border-radius: 1rem;
   font-family: "Comfortaa";
   position: relative;
-  line-height: 1.5rem;
+  line-height: 2.5rem;
   
   &__message {
     margin: 0;
@@ -20,6 +20,7 @@
     margin-top: 0.4rem;
     display: block;
     text-align: right;
+    line-height: 1rem;
   }
 
   &--user {
