@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import ChatBubble from "../ChatBubble/ChatBubble";
 import "./ChatCard.scss";
 
 function ChatCard({ chatHistory, newMessage, setNewMessage, handleSend }) {
@@ -14,15 +15,12 @@ function ChatCard({ chatHistory, newMessage, setNewMessage, handleSend }) {
     <div className="chat-card">
       <div className="chat-card__chat-window" ref={scrollRef}>
         {chatHistory.map((msg, index) => (
-          <div
+          <ChatBubble
             key={index}
-            className={`chat-bubble ${
-              msg.sender === "user" ? "chat-bubble--user" : "chat-bubble--bot"
-            }`}
-          >
-            <p>{msg.message}</p>
-            <span className="chat-bubble__timestamp">{msg.timestamp}</span>
-          </div>
+            sender={msg.sender}
+            message={msg.message}
+            timestamp={msg.timestamp}
+          />
         ))}
       </div>
 

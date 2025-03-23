@@ -18,7 +18,8 @@ async function chat(text) {
         " You are embedded inside a habit tracker website. Always" + 
         " be compassionate and have a bubbly personaility when needed" + 
         " I will pass in the history of the last few chats to ensure you" + 
-        " know whats happening",
+        " know whats happening. Also the response will put into a jsx so" + 
+        " make sure the effects you use can be rendered in jsx",
     });
 
     const result = await model.generateContent({

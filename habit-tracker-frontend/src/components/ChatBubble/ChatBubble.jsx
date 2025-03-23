@@ -1,4 +1,3 @@
-
 import "./ChatBubble.scss";
 
 function ChatBubble({ sender, message, timestamp }) {

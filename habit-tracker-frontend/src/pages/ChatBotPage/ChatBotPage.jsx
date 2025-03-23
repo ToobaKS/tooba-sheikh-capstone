@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ChatCard from "../../components/ChatCard/ChatCard";
-import ChatBubble from "../../components/ChatBubble/ChatBubble";
 import { fetchChatHistory, chatWithBot } from "../../util/api";
 import "./ChatBotPage.scss";
 
@@ -59,7 +58,7 @@ function ChatBotPage() {
 
   return (
     <main className="chatbot-page">
-      <h1 className="chatbot-page__title">AI Buddy</h1>
+      <h1 className="chatbot-page__title">Croot - AI comapnion</h1>
       <ChatCard
         chatHistory={chatHistory}
         newMessage={newMessage}

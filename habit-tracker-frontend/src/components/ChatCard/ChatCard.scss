@@ -34,7 +34,7 @@
     padding: 0.75rem 1rem;
     border: 1px solid $accent-color-seven;
     border-radius: 2rem;
-    font-family: "Comfortaa", sans-serif;
+    font-family: "Comfortaa";
     font-size: 1rem;
     background-color: $font-color-one;
     color: $font-color-two;
@@ -48,7 +48,8 @@
 
   &__send {
     margin-left: 0.75rem;
-    padding: 0.75rem 1.25rem;
+    padding: 0rem 1.25rem;
+    font-family: "Comfortaa";
     background-color: $accent-color-ten;
     color: $font-color-one;
     border: none;
@@ -63,33 +64,3 @@
   }
 }
 
-.chat-bubble {
-  max-width: 80%;
-  padding: 0.75rem 1rem;
-  border-radius: 1rem;
-  font-family: "Comfortaa", sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  position: relative;
-  word-wrap: break-word;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-
-  &__timestamp {
-    display: block;
-    font-size: 0.7rem;
-    margin-top: 0.3rem;
-    opacity: 0.6;
-  }
-
-  &--user {
-    background-color: $secondary-card-color-one;
-    align-self: flex-end;
-    color: $font-color-one;
-  }
-
-  &--bot {
-    background-color: $secondary-card-color-two;
-    align-self: flex-start;
-    color: $font-color-two;
-  }
-}
