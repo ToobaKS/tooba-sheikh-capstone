@@ -1,0 +1,38 @@
+@use "../../styles/partials/global" as *;
+
+.chat-bubble {
+  max-width: 60%;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  font-family: "Comfortaa";
+  position: relative;
+  line-height: 1.5rem;
+  
+  &__message {
+    margin: 0;
+    
+  }
+
+  &__timestamp {
+    font-size: 0.7rem;
+    color: $font-color-two;
+    margin-top: 0.4rem;
+    display: block;
+    text-align: right;
+  }
+
+  &--user {
+    background-color: $secondary-card-color-one;
+    color: $font-color-one;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+  }
+
+  &--bot {
+    background-color: $accent-color-two;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+    color: $font-color-two;
+  }
+}

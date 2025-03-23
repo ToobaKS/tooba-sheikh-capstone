@@ -1,0 +1,24 @@
+@use "../../styles/partials/global" as *;
+
+.chatbot-page{
+    width: 100%;
+    background-image: url("../../assets/backgrounds/7.svg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    @include display-flex(column, center, center);
+
+    &__title {
+        font-size: 2rem;
+        font-family: "Averia Serif Libre", serif;
+        color: $accent-color-ten;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.5px;
+      
+        @media (min-width: $tablet-breakpoint) {
+          font-size: 2.5rem;
+        }
+      }
+}
