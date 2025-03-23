@@ -12,6 +12,13 @@ async function chat(text) {
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
       model: "gemini-2.0-flash",
+      systemInstruction:
+        "Your name is Croot, a helper for people who want to talk" + 
+        " about thier day." + 
+        " You are embedded inside a habit tracker website. Always" + 
+        " be compassionate and have a bubbly personaility when needed" + 
+        " I will pass in the history of the last few chats to ensure you" + 
+        " know whats happening",
     });
 
     const result = await model.generateContent({
@@ -24,7 +31,6 @@ async function chat(text) {
       "I'm not sure how to respond.";
 
     return botResponse;
-
   } catch (error) {
     console.error("ERROR:", error);
     throw error;
@@ -71,8 +77,8 @@ export const getChatHistory = async (req, res) => {
 
   try {
     const chatHistory = await knex("chat_log")
-      .where({ user_id })
-      .orderBy("timestamp", "desc");
+      .where({ user_id: req.user.id })
+      .orderBy("timestamp", "asc");
     res.status(200).json(chatHistory);
   } catch (error) {
     res

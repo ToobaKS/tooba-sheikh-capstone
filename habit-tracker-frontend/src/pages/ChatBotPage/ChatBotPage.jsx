@@ -60,31 +60,12 @@ function ChatBotPage() {
   return (
     <main className="chatbot-page">
       <h1 className="chatbot-page__title">AI Buddy</h1>
-      <ChatCard>
-        <div className="chatbot-page__chat-window">
-          {[...chatHistory].reverse().map((msg, index) => (
-            <ChatBubble
-              key={index}
-              sender={msg.sender}
-              message={msg.message}
-              timestamp={msg.timestamp}
-            />
-          ))}
-        </div>
-        <div className="chatbot-page__input-bar">
-          <input
-            type="text"
-            placeholder="Type a message..."
-            className="chatbot-page__input"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          />
-          <button className="chatbot-page__send" onClick={handleSend}>
-            Send
-          </button>
-        </div>
-      </ChatCard>
+      <ChatCard
+        chatHistory={chatHistory}
+        newMessage={newMessage}
+        setNewMessage={setNewMessage}
+        handleSend={handleSend}
+      />
     </main>
   );
 }

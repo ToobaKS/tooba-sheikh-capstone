@@ -1,3 +1,5 @@
+@use "../../styles/partials/global" as *;
+
 .chat-bubble {
     max-width: 60%;
     padding: 0.75rem 1rem;
@@ -13,20 +15,20 @@
   
     &__timestamp {
       font-size: 0.7rem;
-      color: #888;
+      color: $font-color-two;
       margin-top: 0.4rem;
       display: block;
       text-align: right;
     }
   
     &--user {
-      background-color: #c0d2b1;
+      background-color: $secondary-card-color-one;
       align-self: flex-end;
       border-bottom-right-radius: 0;
     }
   
     &--bot {
-      background-color: #f1c8b3;
+      background-color: $accent-color-two;
       align-self: flex-start;
       border-bottom-left-radius: 0;
     }
