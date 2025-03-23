@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchUserCategories } from "../../util/api";
+import { fetchUserCategories, addUserCategory } from "../../util/api";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import AddCategoryButton from "../../components/AddCategoryButton/AddCategoryButton";
+import AddCategoryModal from "../../components/AddCategoryModal/AddCategoryModal";
 import "./HomePage.scss";
 
 function HomePage() {
   const [categories, setCategories] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,13 +39,27 @@ function HomePage() {
             onClick={() => handleClick(category.name)}
           />
         ))}
-        <div className="category-card category-card--add" onClick={() => console.log("Add new category")}>
-          <span className="category-card__plus">+</span>
-        </div>
+        <AddCategoryModal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          onSelect={async (categoryName) => {
+            try {
+              // Call your backend add method
+              await addUserCategory({ name: categoryName });
+
+              // Refresh categories
+              const updated = await fetchUserCategories();
+              setCategories(updated);
+              setShowModal(false);
+            } catch (err) {
+              console.error("Error adding category", err);
+            }
+          }}
+        />
+        <AddCategoryButton onClick={() => setShowModal(true)} />
       </div>
     </main>
   );
 }
 
 export default HomePage;
-

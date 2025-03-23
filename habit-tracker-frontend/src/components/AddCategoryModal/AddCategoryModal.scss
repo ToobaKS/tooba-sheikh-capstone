@@ -1,0 +1,76 @@
+@use "../../styles/partials/global" as *;
+
+.add-category-modal {
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 80%;
+  height: 80%;
+  @include display-flex(column, space-between, center);
+  font-family: "Comfortaa", sans-serif;
+
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5) url("../../assets/gifs/59.gif")
+      center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  &__title {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9) ;
+    max-width: 400px;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    font-size: 1.5rem;
+    color: $accent-color-ten;
+    margin-bottom: 1rem;
+  }
+
+  &__grid {
+    width: 80%;
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    justify-content: center;
+  }
+
+  &__card {
+    flex-shrink: 1;
+    max-height: 175px;
+    min-height: 175px;
+    min-width: 185px;
+    max-width: 185px;
+    background-color: $background-color-three;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      margin-top: 0.5rem;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+
+  &__emoji {
+    font-size: 2rem;
+  }
+}
