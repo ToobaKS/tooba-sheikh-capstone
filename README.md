@@ -7,6 +7,17 @@ As users complete habits, their **plant grows**, and they can **leave messages f
 
 This site makes habit tracking **fun, rewarding, and personal**, encouraging long-term engagement through **gamification and self-reflection**.
 
+
+## Installation Instructions
+- clone the repository onto computer
+- cd into front-end and run "npm i" in the terminal
+- cd into back-end and run "npm i" in the terminal
+- create a schema name "habittracker" in mysqlworkbench
+- Sat in the backend folder and run "npm run reset" to run the migrations in the terminal
+- Staying in the backend folder, run "npm run start" in the terminal  
+- cd into the front-end folder, run "npm run dev" in the terminal
+- You will start from the landing page, from where you can log in and explore the wesbite  
+
 ## Problem Space
 
 Many habit trackers are **boring, overwhelming, or purely functional**. Users often **lose motivation** because there's no **immediate reward** for tracking habits.
@@ -49,10 +60,9 @@ This site **solves that problem** by:
 ✅ **Landing Page** – Users will start on the landing page. <br>
 ✅ **Login Page** – Users can login using thier email and password.<br>
 ✅ **Register** – Users can register for Rootinely.<br>
-✅ **Habit Tracker** – Users can add, complete, and track habits.  
-✅ **Plant Growth System** – The plant grows **based on streaks**.  
-✅ **Time Capsule Feature** – Users write notes for their **future selves**, unlocking them after a set period.  
-✅ **Chatbot Feature** – Provides positive reinforcement and motivation.
+✅ **Habit Tracker** – Users can add, delete, edit, complete, and track habits. <br>   
+✅ **Time Capsule Feature** – Users write notes for their **future selves**, unlocking them after a set period.<br>  
+✅ **Chatbot Feature** – Provides positive reinforcement and motivation.<br>
 
 ## Implementation
 
@@ -203,9 +213,10 @@ The database consists of **six tables**, with structured relationships between u
 **If time allows, future updates may include**:  
 🌸 Customizable plant pots & themes  
 🐦 Unlockable creatures (butterflies, fireflies, etc.)  
-🛠 Habit challenges with friends  
-🌿 Allowing users to visit each other garden and leaving messages
+🛠 Habit challenges with friends <br>  
+🌿 Allowing users to visit each other garden and leaving messages <br>
 📷 AR mode to see your plant in real life<br>
 🌸 Users can view & encourage friends' progress.<br>
 🐦 Tableau Integration- Shows habit progress visually. <br>
-✅ Daily Streak Tracking – Encourages consistency.
+✅ Daily Streak Tracking – Encourages consistency.<br>
+✅ Plant Growth System – The plant grows based on streaks.<br>
