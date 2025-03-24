@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import HabitHeader from "../../components/HabitHeader/HabitHeader";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import EmptyState from "../../components/EmptyState/EmptyState";
+import HabitFormModal from "../../components/HabitFormModal/HabitFormModal";
 import "./HabitPage.scss";
 
 function HabitPage() {
-  const { categoryName } = useParams();
-  const [habits, setHabits] = useState([]);
+  const { categoryName } = useParams(); // dynamic route
+  const [habits, setHabits] = useState([]); // You'll fetch and set these later
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    setHabits([]);
-  }, [categoryName]);
+  const handleAddHabit = (newHabit) => {
+    setHabits((prev) => [...prev, newHabit]);
+    setIsModalOpen(false);
+  };
 
   return (
     <main className="habit-page">
-      <div className="habit-page__plant-container">
-      </div>
+      <HabitHeader categoryName={categoryName} />
 
-      <div className="habit-page__main">
-        <HabitHeader categoryName={categoryName} />
-
+      <section className="habit-page__content">
         {habits.length === 0 ? (
           <EmptyState />
         ) : (
@@ -30,7 +30,20 @@ function HabitPage() {
             ))}
           </div>
         )}
-      </div>
+
+        <button
+          className="habit-page__add-button"
+          onClick={() => setIsModalOpen(true)}
+        >
+          +
+        </button>
+      </section>
+
+      <HabitFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleAddHabit}
+      />
     </main>
   );
 }
