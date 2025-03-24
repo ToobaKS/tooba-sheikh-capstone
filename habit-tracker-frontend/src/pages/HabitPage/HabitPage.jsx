@@ -1,49 +1,58 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  fetchHabits,
+  fetchCategoryInfo,
+  fetchCategoryProgress,
+} from "../../util/api";
 import HabitHeader from "../../components/HabitHeader/HabitHeader";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import EmptyState from "../../components/EmptyState/EmptyState";
-import HabitFormModal from "../../components/HabitFormModal/HabitFormModal";
 import "./HabitPage.scss";
 
 function HabitPage() {
-  const { categoryName } = useParams(); // dynamic route
-  const [habits, setHabits] = useState([]); // You'll fetch and set these later
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { categoryName } = useParams();
+  const [habits, setHabits] = useState([]);
+  const [categoryInfo, setCategoryInfo] = useState(null);
 
-  const handleAddHabit = (newHabit) => {
-    setHabits((prev) => [...prev, newHabit]);
-    setIsModalOpen(false);
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const habitData = await fetchHabits(categoryName);
+        const infoData = await fetchCategoryInfo(categoryName);
+
+        setHabits(habitData);
+        setCategoryInfo({
+          ...infoData,
+          userCategoryId: habitData[0]?.user_category_id || null,
+        });
+      } catch (err) {
+        console.log("Error fetching habits or category info", err);
+      }
+    };
+
+    loadData();
+  }, [categoryName]);
 
   return (
     <main className="habit-page">
-      <HabitHeader categoryName={categoryName} />
-
-      <section className="habit-page__content">
-        {habits.length === 0 ? (
-          <EmptyState />
-        ) : (
-          <div className="habit-page__list">
-            {habits.map((habit) => (
-              <HabitCard key={habit.id} habit={habit} />
-            ))}
-          </div>
-        )}
-
-        <button
-          className="habit-page__add-button"
-          onClick={() => setIsModalOpen(true)}
-        >
-          +
-        </button>
-      </section>
-
-      <HabitFormModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSubmit={handleAddHabit}
-      />
+      {categoryInfo && (
+        <HabitHeader
+          name={categoryInfo.name}
+          description={categoryInfo.description}
+          categoryId={categoryInfo.userCategoryId}
+        />
+      )}
+      <div className="habit-page__content">
+        <section className="habit-page__plant-container">plant</section>
+        <section className="habit-page__list">
+          {habits.length > 0 ? (
+            habits.map((habit) => <HabitCard key={habit.id} habit={habit} />)
+          ) : (
+            <EmptyState />
+          )}
+        </section>
+      </div>
     </main>
   );
 }

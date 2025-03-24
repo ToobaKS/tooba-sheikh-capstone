@@ -57,6 +57,18 @@ export const fetchCategories = async () => {
   }
 };
 
+export const fetchCategoryInfo = async (categoryName) => {
+  try {
+    const resp = await axios.get(`${BASE_URL}/categories/${categoryName}`, {
+      headers: getAuthHeaders(),
+    });
+    return resp.data;
+  } catch (error) {
+    console.log("Failed to fetch category info.");
+    throw error;
+  }
+};
+
 /** USER CATEGORIES **/
 export const addUserCategory = async (categoryData) => {
   try {
@@ -82,10 +94,25 @@ export const fetchUserCategories = async () => {
   }
 };
 
-/** HABITS **/
-export const fetchHabits = async () => {
+export const fetchCategoryProgress = async (category_id) => {
   try {
-    const resp = await axios.get(`${BASE_URL}/habit`, {
+    const resp = await axios.get(
+      `${BASE_URL}/user-category/${category_id}/progress`,
+      {
+        headers: getAuthHeaders(),
+      }
+    );
+    return resp.data;
+  } catch (error) {
+    console.log("Failed to fetch category progress.");
+    throw error;
+  }
+};
+
+/** HABITS **/
+export const fetchHabits = async (categoryName) => {
+  try {
+    const resp = await axios.get(`${BASE_URL}/habit/${categoryName}`, {
       headers: getAuthHeaders(),
     });
     return resp.data;
