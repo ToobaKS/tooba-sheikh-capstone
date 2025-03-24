@@ -48,9 +48,9 @@ This site **solves that problem** by:
 
 ### 🎯 MVP Features (Minimum Viable Product)
 
-✅ **Landing Page** – Users will start on the landing page. 
-✅ **Login Page** – Users can login using thier email and password. 
-✅ **Register** – Users can register for Rootinely. 
+✅ **Landing Page** – Users will start on the landing page. <br>
+✅ **Login Page** – Users can login using thier email and password.<br> 
+✅ **Register** – Users can register for Rootinely.<br> 
 ✅ **Habit Tracker** – Users can add, complete, and track habits.  
 ✅ **Plant Growth System** – The plant grows **based on streaks**.  
 ✅ **Time Capsule Feature** – Users write notes for their **future selves**, unlocking them after a set period.   
