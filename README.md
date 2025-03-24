@@ -7,7 +7,6 @@ As users complete habits, their **plant grows**, and they can **leave messages f
 
 This site makes habit tracking **fun, rewarding, and personal**, encouraging long-term engagement through **gamification and self-reflection**.
 
-
 ## Problem Space
 
 Many habit trackers are **boring, overwhelming, or purely functional**. Users often **lose motivation** because there's no **immediate reward** for tracking habits.
@@ -18,7 +17,6 @@ This site **solves that problem** by:
 ✅ Keeping users **emotionally invested** with a **cozy, aesthetic design**.  
 ✅ Providing **emotional support via a chatbot**.  
 ✅ Offering **data-driven insights with Tableau** to track habits effectively.
-
 
 ## User Profile
 
@@ -49,13 +47,12 @@ This site **solves that problem** by:
 ### 🎯 MVP Features (Minimum Viable Product)
 
 ✅ **Landing Page** – Users will start on the landing page. <br>
-✅ **Login Page** – Users can login using thier email and password.<br> 
-✅ **Register** – Users can register for Rootinely.<br> 
+✅ **Login Page** – Users can login using thier email and password.<br>
+✅ **Register** – Users can register for Rootinely.<br>
 ✅ **Habit Tracker** – Users can add, complete, and track habits.  
 ✅ **Plant Growth System** – The plant grows **based on streaks**.  
-✅ **Time Capsule Feature** – Users write notes for their **future selves**, unlocking them after a set period.   
-✅ **Chatbot Feature** – Provides positive reinforcement and motivation.  
-
+✅ **Time Capsule Feature** – Users write notes for their **future selves**, unlocking them after a set period.  
+✅ **Chatbot Feature** – Provides positive reinforcement and motivation.
 
 ## Implementation
 
@@ -91,15 +88,12 @@ This site **solves that problem** by:
 - Lottie / Rive (for cute animated plant growth)
 - LocalStorage (to cache data and reduce database reads)
 
-
 ### APIs
 
 🔹 **LottieFiles API** – Animated plant growth effects.  
 🔹 **Web Speech API (Optional)** – If adding voice notes for the time capsule.  
 🔹 **Gemini API** – Chatbot functionality.  
 🔹 **Tableau REST API** – Data visualization for progress tracking.
-
-
 
 ### **Sitemap**
 
@@ -112,10 +106,10 @@ This site **solves that problem** by:
 7️⃣ **Login Page** – Allow user to login.<br>
 8️⃣ **Register Page** - Allow users to register
 
-
 ## **Mockups**
 
 #### Logo:
+
 <img src="./habit-tracker-frontend/src/assets/logos/logo-4.png" alt="logo" width=100px height=100px>
 
 #### Login Page:
@@ -125,7 +119,6 @@ This site **solves that problem** by:
 #### Home Page:
 
 ![Sitemap](./habit-tracker-frontend/src/assets/mockups/Home-Page.png)
-
 
 ## **End Points**
 
@@ -174,8 +167,6 @@ This site **solves that problem** by:
 | ------- | ----------- | ---------------------------------- |
 | **GET** | `/progress` | Get user’s habit stats for Tableau |
 
-
-
 ## 📊 Data & Relationships
 
 The database consists of **six tables**, with structured relationships between users, habits, time capsules, chatbot interactions, and friendships.
@@ -187,7 +178,6 @@ The database consists of **six tables**, with structured relationships between u
 - **Users ↔ Time Capsules** → One user can create **many time capsules** (`One-to-Many`).
 - **Users ↔ Chatbot Conversations** → Each user has **multiple chatbot interactions** (`One-to-Many`).
 - **Users ↔ Friends** → Users can **send & receive** friend requests (`Many-to-Many`).
-
 
 ## 📅 Roadmap - Sprint Plan (2 Weeks)
 
@@ -202,13 +192,11 @@ The database consists of **six tables**, with structured relationships between u
 
 ### Week 2 – Data Visualization, Multiuser, Testing & Final Features
 
-✅ Connect **habit streaks to plant evolution**    
+✅ Connect **habit streaks to plant evolution**  
 ✅ Store **habit & chatbot interaction data in MySQL (via Knex.js)**  
 ✅ Implement **secure API endpoints with JWT authentication**  
 ✅ **Bug fixes & final UI adjustments**  
 ✅ **Prepare demo & user testing**
-
-
 
 ## Future Implementations
 
@@ -217,7 +205,7 @@ The database consists of **six tables**, with structured relationships between u
 🐦 Unlockable creatures (butterflies, fireflies, etc.)  
 🛠 Habit challenges with friends  
 🌿 Allowing users to visit each other garden and leaving messages
-📷 AR mode to see your plant in real life
-🌸 Users can view & encourage friends' progress.
-🐦 Tableau Integration-  Shows habit progress visually. 
-✅ Daily Streak Tracking – Encourages consistency. 
+📷 AR mode to see your plant in real life<br>
+🌸 Users can view & encourage friends' progress.<br>
+🐦 Tableau Integration- Shows habit progress visually. <br>
+✅ Daily Streak Tracking – Encourages consistency.
