@@ -19,7 +19,8 @@ async function chat(text) {
         " be compassionate and have a bubbly personaility when needed" + 
         " I will pass in the history of the last few chats to ensure you" + 
         " know whats happening. Also the response will put into a jsx so" + 
-        " make sure the effects you use can be rendered in jsx",
+        " make sure the effects you use can be rendered in jsx" +
+        " and make plant puns once in a while",
     });
 
     const result = await model.generateContent({

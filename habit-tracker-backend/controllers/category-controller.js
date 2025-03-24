@@ -8,7 +8,7 @@ const knex = initKnex(configuration);
  */
 export const getAllCategories = async (req, res) => {
   try {
-    const categories = await knex("category").select("id", "name", "description");
+    const categories = await knex("category");
     res.status(200).json(categories);
   } catch (error) {
     res.status(500).json({

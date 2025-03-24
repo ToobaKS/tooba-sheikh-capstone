@@ -1,0 +1,19 @@
+@use "../../styles/partials/global" as *;
+
+.add-category-button {
+  background-color: $accent-color-eleven;
+  color: $font-color-one;
+  border: none;
+  border-radius: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken($accent-color-eleven, 5%);
+  }
+}

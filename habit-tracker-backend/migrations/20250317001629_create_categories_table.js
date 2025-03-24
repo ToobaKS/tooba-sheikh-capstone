@@ -7,12 +7,13 @@ export function up(knex) {
     table.increments("id").primary();
     table.string("name").unique().notNullable();
     table.text("description");
+    table.string("image_url");
     table
       .integer("plant_id")
       .unsigned()
       .references("id")
       .inTable("plants")
-      .onDelete("CASCADE"); // NEW: Relating categories to plants
+      .onDelete("CASCADE");
   });
 }
 

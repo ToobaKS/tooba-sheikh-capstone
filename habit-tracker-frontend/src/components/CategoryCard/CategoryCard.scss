@@ -1,0 +1,44 @@
+@use "../../styles/partials/global" as *;
+
+@use "../../styles/partials/global" as *;
+
+.category-card {
+  background-color: $background-color-three;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-align: center;
+  min-width: 200px;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-family: "Averia Serif Libre", serif;
+    color: $font-color-two;
+    margin-bottom: 0.5rem;
+  }
+
+  &__phase {
+    font-size: 0.9rem;
+    color: $accent-color-eleven;
+  }
+
+  &--add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: $accent-color-ten;
+    background-color: $accent-color-two;
+  }
+
+  &__plus {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}

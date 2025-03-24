@@ -58,7 +58,7 @@ function ChatBotPage() {
 
   return (
     <main className="chatbot-page">
-      <h1 className="chatbot-page__title">Croot - AI comapnion</h1>
+      <h1 className="chatbot-page__title">Croot - AI companion</h1>
       <ChatCard
         chatHistory={chatHistory}
         newMessage={newMessage}
