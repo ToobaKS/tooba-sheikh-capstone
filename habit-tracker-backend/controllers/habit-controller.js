@@ -48,31 +48,17 @@ export const getHabitsByCategory = async (req, res) => {
  */
 export const createHabit = async (req, res) => {
   const user_id = req.user.id;
-  const { category_name, habit_name } = req.body;
+  const { user_category_id, habit_name, description } = req.body;
 
   try {
-    // Find category ID by name
-    const category = await knex("category")
-      .whereRaw("LOWER(name) = LOWER(?)", [category_name])
-      .first();
-
-    if (!category) {
-      return res.status(404).json({ error: "Category not found." });
+    if (!habit_name || !user_category_id) {
+      return res.status(400).json({ error: "Missing required fields." });
     }
 
-    // Find the user's category entry
-    const userCategory = await knex("user_categories")
-      .where({ user_id, category_id: category.id })
-      .first();
-
-    if (!userCategory) {
-      return res.status(400).json({ error: "User is not in this category." });
-    }
-
-    // Insert new habit
     const [habit_id] = await knex("habits").insert({
-      user_category_id: userCategory.id,
+      user_category_id,
       name: habit_name,
+      description,
     });
 
     const newHabit = await knex("habits").where({ id: habit_id }).first();
@@ -125,45 +111,48 @@ export const deleteHabit = async (req, res) => {
  * Update a habit (name or description).
  */
 export const updateHabit = async (req, res) => {
-    const user_id = req.user.id;
-    const { id } = req.params;
-    const { name, description } = req.body;
-  
-    try {
-      // Find the habit
-      const habit = await knex("habits").where({ id }).first();
-  
-      if (!habit) {
-        return res.status(404).json({ error: "Habit not found." });
-      }
-  
-      // Ensure the user owns this habit
-      const userCategory = await knex("user_categories")
-        .where({ id: habit.user_category_id, user_id })
-        .first();
-  
-      if (!userCategory) {
-        return res.status(403).json({ error: "Unauthorized to update this habit." });
-      }
-  
-      // Update habit fields
-      const updatedFields = {};
-      if (name) updatedFields.name = name;
-      if (description) updatedFields.description = description;
-  
-      if (Object.keys(updatedFields).length === 0) {
-        return res.status(400).json({ error: "No valid fields provided for update." });
-      }
-  
-      await knex("habits").where({ id }).update(updatedFields);
-  
-      const updatedHabit = await knex("habits").where({ id }).first();
-      res.status(200).json(updatedHabit);
-    } catch (error) {
-      res.status(500).json({
-        error: "Error updating habit",
-        details: error.message,
-      });
+  const user_id = req.user.id;
+  const { id } = req.params;
+  const { name, description } = req.body;
+
+  try {
+    // Find the habit
+    const habit = await knex("habits").where({ id }).first();
+
+    if (!habit) {
+      return res.status(404).json({ error: "Habit not found." });
     }
-  };
-  
+
+    // Ensure the user owns this habit
+    const userCategory = await knex("user_categories")
+      .where({ id: habit.user_category_id, user_id })
+      .first();
+
+    if (!userCategory) {
+      return res
+        .status(403)
+        .json({ error: "Unauthorized to update this habit." });
+    }
+
+    // Update habit fields
+    const updatedFields = {};
+    if (name) updatedFields.name = name;
+    if (description) updatedFields.description = description;
+
+    if (Object.keys(updatedFields).length === 0) {
+      return res
+        .status(400)
+        .json({ error: "No valid fields provided for update." });
+    }
+
+    await knex("habits").where({ id }).update(updatedFields);
+
+    const updatedHabit = await knex("habits").where({ id }).first();
+    res.status(200).json(updatedHabit);
+  } catch (error) {
+    res.status(500).json({
+      error: "Error updating habit",
+      details: error.message,
+    });
+  }
+};

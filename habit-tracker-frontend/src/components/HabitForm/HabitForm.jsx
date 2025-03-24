@@ -3,7 +3,7 @@ import "./HabitForm.scss";
 
 function HabitForm({ onSubmit, onClose }) {
   const [formData, setFormData] = useState({
-    title: "",
+    habit_name: "",
     description: "",
   });
 
@@ -15,7 +15,7 @@ function HabitForm({ onSubmit, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({ title: "", description: "" });
+    setFormData({ habit_name: "", description: "" });
   };
 
   return (
@@ -24,9 +24,9 @@ function HabitForm({ onSubmit, onClose }) {
       <input
         className="habit-form__input"
         type="text"
-        name="title"
+        name="habit_name"
         placeholder="Habit Title"
-        value={formData.title}
+        value={formData.habit_name}
         onChange={handleChange}
         required
       />

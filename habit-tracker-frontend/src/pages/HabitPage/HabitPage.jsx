@@ -22,20 +22,25 @@ function HabitPage() {
   const [categoryInfo, setCategoryInfo] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
 
+  const refreshProgress = async (userCategoryId) => {
+    if (!userCategoryId) return;
+
+    try {
+      const updatedProgress = await fetchCategoryProgress(userCategoryId);
+      setCategoryInfo((prev) => ({
+        ...prev,
+        progress: Math.round(updatedProgress.completionRate),
+      }));
+    } catch (error) {
+      console.log("Error refreshing progress:", error);
+    }
+  };
+
   const handleToggleComplete = async (habit_id) => {
     try {
       await logHabitCompletion(habit_id);
       await loadData();
-
-      if (categoryInfo?.userCategoryId) {
-        const updatedProgress = await fetchCategoryProgress(
-          categoryInfo.userCategoryId
-        );
-        setCategoryInfo((prev) => ({
-          ...prev,
-          progress: Math.round(updatedProgress.completionRate),
-        }));
-      }
+      await refreshProgress(categoryInfo.userCategoryId);
     } catch (err) {
       console.log("Error completing habit:", err);
     }
@@ -43,8 +48,14 @@ function HabitPage() {
 
   const handleAddHabit = async (habitData) => {
     try {
-      await addHabit(habitData, categoryInfo.userCategoryId);
+      const payload = {
+        ...habitData,
+        user_category_id: categoryInfo.userCategoryId,
+      };
+
+      await addHabit(payload);
       await loadData();
+      await refreshProgress(categoryInfo.userCategoryId);
       setShowAddModal(false);
     } catch (err) {
       console.log("Error adding habit:", err);
@@ -54,19 +65,27 @@ function HabitPage() {
   const loadData = async () => {
     try {
       const habitData = await fetchHabits(categoryName);
-      const todayLogs = await fetchTodayLogs(categoryName); // 🔥 fetch completed logs for today
+      const todayLogs = await fetchTodayLogs(categoryName);
 
       const habitsWithStatus = habitData.map((habit) => ({
         ...habit,
         completed_today: todayLogs.includes(habit.id),
       }));
-
       setHabits(habitsWithStatus);
 
       const infoData = await fetchCategoryInfo(categoryName);
+      const userCategoryId = habitData[0]?.user_category_id || null;
+
+      let progress = 0;
+      if (userCategoryId) {
+        const progressData = await fetchCategoryProgress(userCategoryId);
+        progress = Math.round(progressData.completionRate);
+      }
+
       setCategoryInfo({
         ...infoData,
-        userCategoryId: habitData[0]?.user_category_id || null,
+        userCategoryId,
+        progress,
       });
     } catch (err) {
       console.log("Error fetching habits or category info", err);
@@ -91,7 +110,6 @@ function HabitPage() {
         <section className="habit-page__plant-container">plant</section>
 
         <section className="habit-page__list">
-
           <Modal
             isOpen={showAddModal}
             onRequestClose={() => setShowAddModal(false)}
@@ -111,6 +129,7 @@ function HabitPage() {
               onClose={() => setShowAddModal(false)}
             />
           </Modal>
+
           {habits.length > 0 ? (
             <>
               <HabitList
