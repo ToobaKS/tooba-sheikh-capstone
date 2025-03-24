@@ -30,32 +30,31 @@ function HomePage() {
   return (
     <main className="categories-page">
       <h1 className="categories-page__title">Your Categories</h1>
+
+      <AddCategoryModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        ariaHideApp={false}
+        onSelect={async (categoryName) => {
+          try {
+            await addUserCategory({ name: categoryName });
+            const updated = await fetchUserCategories();
+            setCategories(updated);
+            setShowModal(false);
+          } catch (err) {
+            console.error("Error adding category", err);
+          }
+        }}
+      />
       <div className="categories-page__grid">
         {categories.map((category) => (
           <CategoryCard
-            key={category.category_id}
+            key={category.id}
             name={category.name}
             plantPhase={category.plant_phase}
             onClick={() => handleClick(category.name)}
           />
         ))}
-        <AddCategoryModal
-          isOpen={showModal}
-          onClose={() => setShowModal(false)}
-          onSelect={async (categoryName) => {
-            try {
-              // Call your backend add method
-              await addUserCategory({ name: categoryName });
-
-              // Refresh categories
-              const updated = await fetchUserCategories();
-              setCategories(updated);
-              setShowModal(false);
-            } catch (err) {
-              console.error("Error adding category", err);
-            }
-          }}
-        />
         <AddCategoryButton onClick={() => setShowModal(true)} />
       </div>
     </main>

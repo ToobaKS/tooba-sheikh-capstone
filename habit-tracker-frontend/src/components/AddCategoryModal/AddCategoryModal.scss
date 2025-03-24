@@ -4,7 +4,7 @@
   padding: 2rem;
   border-radius: 1rem;
   width: 80%;
-  height: 80%;
+  height: 75%;
   @include display-flex(column, space-between, center);
   font-family: "Comfortaa", sans-serif;
 
@@ -21,6 +21,22 @@
     z-index: 10;
   }
 
+  &__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    color: $background-color-three;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.4s;
+  
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+  
   &__title {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.9) ;
