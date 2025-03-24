@@ -1,0 +1,24 @@
+@use "../../styles/partials/global" as *;
+
+.bottle {
+  //width: 120px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__image {
+    max-height: 120px;
+    max-width: 120px;
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    width: 150px;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    width: 180px;
+  }
+}

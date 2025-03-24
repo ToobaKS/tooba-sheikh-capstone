@@ -1,0 +1,46 @@
+@use "../../styles/partials/global" as *;
+
+.capsule-modal {
+  width: 100%;
+  max-width: 500px;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  &__message {
+    background-color: $secondary-card-color-two;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  &__unlock {
+    color: $accent-color-eleven;
+
+    span {
+      font-weight: 600;
+      color: $accent-color-ten;
+    }
+  }
+
+  &__countdown {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: $accent-color-eleven;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $accent-color-ten;
+  }
+}

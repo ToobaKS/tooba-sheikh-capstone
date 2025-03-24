@@ -1,0 +1,60 @@
+@use "../../styles/partials/global" as *;
+
+.access-card {
+  background-color: $font-color-one;
+  padding: 2.5rem;
+  border-radius: 2.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  min-width: 28.125rem;
+  text-align: center;
+  color: $secondary-card-color-one;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__header {
+    width: 100%;
+    @include display-flex(row, space-between, center);
+  }
+
+  &__link {
+    color: $secondary-card-color-one;
+    text-decoration: none;
+  }
+
+  &__title {
+    font-family: "Comfortaa";
+    @include font(5rem, 3.125rem, 900);
+    font-size: 1.8rem;
+
+    &:hover {
+      color: $accent-color-ten;
+    }
+  }
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+  }
+
+  &__icon {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: $accent-color-ten;
+      animation: wiggle 0.5s ease-in-out infinite;
+    }
+  }
+}

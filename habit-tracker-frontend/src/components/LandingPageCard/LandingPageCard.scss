@@ -1,0 +1,35 @@
+@use "../../styles/partials/global" as *;
+
+.landing-card {
+  background-color: $background-color-three;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 300px;
+  min-height: 170px;
+  margin-bottom: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $accent-color-one;
+  }
+
+  &__content {
+    font-size: 1rem;
+    color: #5c3d2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

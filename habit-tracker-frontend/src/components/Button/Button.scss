@@ -1,0 +1,22 @@
+@use "../../styles/partials/global" as *;
+
+.button-link {
+  color: $accent-color-four;
+  background-color: $font-color-three;
+  margin-right: 20px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  font-family: "Comfortaa";
+  border: 2px solid transparent;
+  @include font(18px, 20px, 900);
+
+  &:hover {
+    overflow: hidden;
+    border: 2px solid $accent-color-one;
+    color: $accent-color-one;
+    background-color: $accent-color-eight;
+  }
+}

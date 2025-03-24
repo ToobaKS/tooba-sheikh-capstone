@@ -1,0 +1,42 @@
+@use "../../styles/partials/global" as *;
+
+.habit-form-modal {
+  background-color: $background-color-one;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  margin: auto;
+  position: relative;
+  font-family: "Comfortaa", sans-serif;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.habit-form-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.habit-form-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  border: none;
+  background: transparent;
+  color: $accent-color-ten;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}

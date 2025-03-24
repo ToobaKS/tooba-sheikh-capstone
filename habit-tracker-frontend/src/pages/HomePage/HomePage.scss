@@ -1,0 +1,26 @@
+@use "../../styles/partials/global" as *;
+
+.categories-page {
+  padding: $mobile-padding;
+  background-image: url("../../assets/backgrounds/5.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+
+  &__title {
+    font-size: 2rem;
+    font-family: "Averia Serif Libre", serif;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: $font-color-two;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+}

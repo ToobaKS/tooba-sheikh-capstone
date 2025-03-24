@@ -1,0 +1,57 @@
+@use "../../styles/partials/global" as *;
+
+.landing-hero {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 80px 80px;
+  background-color: $accent-color-four;
+  border-radius: 40px;
+  margin: 16px;
+
+  &__logo-container {
+    @include display-flex(row, start, center);
+  }
+
+  &__logo {
+    min-width: 300px;
+    max-width: 300px;
+    padding-right: 50px;
+  }
+
+  &__main {
+    padding-left: 30px;
+    @include display-flex(column, center, stretch);
+  }
+
+  &__titles {
+    padding-bottom: 30px;
+  }
+
+  &__title {
+    padding-bottom: 30px;
+    color: $font-color-three;
+    font-family: "Averia Serif Libre";
+    @include font(100px, 50px, 700);
+  }
+
+  &__subtitle {
+    color: $font-color-three;
+    font-family: "Comfortaa";
+    @include font(30px, 50px, 700);
+  }
+
+  &__buttons {
+    @include display-flex(row, start, center);
+  }
+}
+
+.decorations {
+  &__plant1 {
+    position: absolute;
+    top: -150px;
+    left: 1000px;
+    width: 700px;
+    opacity: 0.8;
+  }
+}
