@@ -85,10 +85,10 @@ const getTimeCapsuleById = async (req, res) => {
 };
 
 /**
- * Delete a time capsule by ID (Protected Route)
+ * Delete a time capsule by ID
  */
 const deleteTimeCapsule = async (req, res) => {
-  const user_id = req.user.id; // Extract user ID from JWT token
+  const user_id = req.user.id; 
   const { id } = req.params;
 
   try {

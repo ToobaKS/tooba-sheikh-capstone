@@ -6,12 +6,12 @@ const router = express.Router();
 
 router
   .route("/")
-  .post(protect, timeCapsuleController.createTimeCapsule) // Create a time capsule
-  .get(protect, timeCapsuleController.getUserTimeCapsules); // Get all time capsules for the logged-in user
+  .post(protect, timeCapsuleController.createTimeCapsule)
+  .get(protect, timeCapsuleController.getUserTimeCapsules); 
 
 router
   .route("/:id")
-  .get(protect, timeCapsuleController.getTimeCapsuleById) // Get a specific time capsule (if unlocked)
-  .delete(protect, timeCapsuleController.deleteTimeCapsule); // Delete a time capsule
+  .get(protect, timeCapsuleController.getTimeCapsuleById)
+  .delete(protect, timeCapsuleController.deleteTimeCapsule);
 
 export default router;

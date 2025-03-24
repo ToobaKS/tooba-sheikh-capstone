@@ -48,13 +48,13 @@ This site **solves that problem** by:
 
 ### 🎯 MVP Features (Minimum Viable Product)
 
+✅ **Landing Page** – Users will start on the landing page. 
+✅ **Login Page** – Users can login using thier email and password. 
+✅ **Register** – Users can register for Rootinely. 
 ✅ **Habit Tracker** – Users can add, complete, and track habits.  
 ✅ **Plant Growth System** – The plant grows **based on streaks**.  
-✅ **Time Capsule Feature** – Users write notes for their **future selves**, unlocking them after a set period.  
-✅ **Daily Streak Tracking** – Encourages consistency.  
-✅ **Tableau Integration** – Shows habit progress visually.  
+✅ **Time Capsule Feature** – Users write notes for their **future selves**, unlocking them after a set period.   
 ✅ **Chatbot Feature** – Provides positive reinforcement and motivation.  
-✅ **Multiuser Support** – Users can **view & encourage** friends' progress.
 
 
 ## Implementation
@@ -202,10 +202,8 @@ The database consists of **six tables**, with structured relationships between u
 
 ### Week 2 – Data Visualization, Multiuser, Testing & Final Features
 
-✅ Connect **habit streaks to plant evolution**  
-✅ Integrate **Tableau for habit insights & progress tracking**  
+✅ Connect **habit streaks to plant evolution**    
 ✅ Store **habit & chatbot interaction data in MySQL (via Knex.js)**  
-✅ Add **multiuser system** (friends & social support features)<br>
 ✅ Implement **secure API endpoints with JWT authentication**  
 ✅ **Bug fixes & final UI adjustments**  
 ✅ **Prepare demo & user testing**
@@ -220,5 +218,6 @@ The database consists of **six tables**, with structured relationships between u
 🛠 Habit challenges with friends  
 🌿 Allowing users to visit each other garden and leaving messages
 📷 AR mode to see your plant in real life
-
-
+🌸 Users can view & encourage friends' progress.
+🐦 Tableau Integration-  Shows habit progress visually. 
+✅ Daily Streak Tracking – Encourages consistency. 

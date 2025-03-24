@@ -11,7 +11,6 @@ export const logWatering = async (req, res) => {
   const { category_id } = req.params;
 
   try {
-    // Check if the user is eligible to water today
     const progress = await knex("habit_log")
       .join("habits", "habit_log.habit_id", "habits.id")
       .where("habits.user_category_id", category_id)
@@ -35,7 +34,6 @@ export const logWatering = async (req, res) => {
         .json({ error: "Not enough progress to water today." });
     }
 
-    // Check if already watered today
     const today = new Date().toISOString().split("T")[0];
     const existingWaterLog = await knex("watering_log")
       .where({ user_category_id: category_id, user_id })
@@ -46,7 +44,6 @@ export const logWatering = async (req, res) => {
       return res.status(400).json({ error: "Already watered today." });
     }
 
-    // Log watering
     const [log_id] = await knex("watering_log").insert({
       user_category_id: category_id,
       user_id,

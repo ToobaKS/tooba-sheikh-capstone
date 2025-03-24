@@ -1,0 +1,34 @@
+@use "../../styles/partials/global" as *;
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+
+  &__gif {
+    width: 200px;
+    margin-bottom: 1.5rem;
+  }
+
+  &__message {
+    font-family: "Averia Serif Libre", serif;
+    font-size: 1.5rem;
+    color: $font-color-two;
+    margin-bottom: 1rem;
+  }
+
+  &__cta {
+    background-color: $accent-color-ten;
+    color: $font-color-one;
+    font-family: "Comfortaa", sans-serif;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($accent-color-ten, 5%);
+    }
+  }
+}

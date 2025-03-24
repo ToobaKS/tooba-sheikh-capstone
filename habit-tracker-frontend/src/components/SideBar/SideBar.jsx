@@ -10,7 +10,6 @@ function SideBar() {
     <aside
       className={`sidebar ${isOpen ? "sidebar--open" : "sidebar--closed"}`}
     >
-      {/* Navigation Links */}
       <nav className="sidebar__nav">
         <div className="sidebar__logo">
           <img

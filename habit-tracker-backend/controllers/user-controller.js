@@ -5,12 +5,11 @@ import bcrypt from "bcryptjs";
 
 const knex = initKnex(configuration);
 
-// 🔑 Generate JWT Token
+// Generate JWT Token
 const generateToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
 };
 
-// ✅ Register User
 const registerUser = async (req, res) => {
   const { first_name, last_name, email, password, username } = req.body;
   if (!first_name || !last_name || !email || !password || !username) {
@@ -39,7 +38,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// ✅ Login User
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -64,7 +62,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// ✅ Get User Profile
 const getUserProfile = async (req, res) => {
   try {
     const user = await knex("users")
@@ -82,5 +79,4 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-// 🚀 Export functions (named exports)
 export { registerUser, loginUser, getUserProfile };
