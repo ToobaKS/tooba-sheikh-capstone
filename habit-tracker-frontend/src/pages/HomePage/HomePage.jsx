@@ -27,6 +27,28 @@ function HomePage() {
     navigate(`/habit/${categoryName}`);
   };
 
+  const handleAddCategory = async (categoryName) => {
+    if (!categoryName) return;
+
+    try {
+      await addUserCategory({ category_name: categoryName });
+      const updated = await fetchUserCategories();
+      setCategories(updated);
+      setShowModal(false);
+    } catch (err) {
+      if (
+        err.response &&
+        err.response.status === 400 &&
+        err.response.data?.error === "User is already in this category."
+      ) {
+        alert("You've already added this category.");
+      } else {
+        console.error("Error adding category:", err);
+        alert("Something went wrong. Please try again.");
+      }
+    }
+  };
+
   return (
     <main className="categories-page">
       <h1 className="categories-page__title">Your Categories</h1>
@@ -35,16 +57,7 @@ function HomePage() {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         ariaHideApp={false}
-        onSelect={async (categoryName) => {
-          try {
-            await addUserCategory({ name: categoryName });
-            const updated = await fetchUserCategories();
-            setCategories(updated);
-            setShowModal(false);
-          } catch (err) {
-            console.error("Error adding category", err);
-          }
-        }}
+        onSelect={handleAddCategory}
       />
       <div className="categories-page__grid">
         {categories.map((category) => (

@@ -2,7 +2,6 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:8080";
 
-// Attach token to headers if it exists
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
   return token ? { Authorization: `Bearer ${token}` } : {};
@@ -14,8 +13,7 @@ export const registerUser = async (userData) => {
     const resp = await axios.post(`${BASE_URL}/user/register`, userData);
     return resp.data;
   } catch (error) {
-    console.error(error);
-    console.log("Failed to register user.");
+    console.log("Failed to register user:", error);
     throw error;
   }
 };
@@ -24,15 +22,12 @@ export const loginUser = async (credentials) => {
   try {
     const resp = await axios.post(`${BASE_URL}/user/login`, credentials);
     const token = resp.data.token;
-    
     if (token) {
       localStorage.setItem("token", token);
     }
-
     return resp.data;
   } catch (error) {
-    console.error(error);
-    console.log("Login failed. Check your credentials.");
+    console.log("Login failed:", error);
     throw error;
   }
 };
@@ -44,8 +39,7 @@ export const fetchUserProfile = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch user profile.");
+    console.log("Failed to fetch user profile:", error);
     throw error;
   }
 };
@@ -58,8 +52,7 @@ export const fetchCategories = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch categories.");
+    console.log("Failed to fetch categories:", error);
     throw error;
   }
 };
@@ -72,8 +65,7 @@ export const addUserCategory = async (categoryData) => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to add category.");
+    console.log("Failed to add category:", error);
     throw error;
   }
 };
@@ -85,8 +77,7 @@ export const fetchUserCategories = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch user categories.");
+    console.log("Failed to fetch user categories:", error);
     throw error;
   }
 };
@@ -99,8 +90,7 @@ export const fetchHabits = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch habits.");
+    console.log("Failed to fetch habits:", error);
     throw error;
   }
 };
@@ -112,8 +102,7 @@ export const addHabit = async (habitData) => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to add habit.");
+    console.log("Failed to add habit:", error);
     throw error;
   }
 };
@@ -124,8 +113,7 @@ export const deleteHabit = async (habit_id) => {
       headers: getAuthHeaders(),
     });
   } catch (error) {
-    console.error(error);
-    alert("Failed to delete habit.");
+    console.log("Failed to delete habit:", error);
     throw error;
   }
 };
@@ -133,13 +121,16 @@ export const deleteHabit = async (habit_id) => {
 /** HABIT LOGS **/
 export const logHabitCompletion = async (habit_id) => {
   try {
-    const resp = await axios.post(`${BASE_URL}/habit-log/${habit_id}`, {}, {
-      headers: getAuthHeaders(),
-    });
+    const resp = await axios.post(
+      `${BASE_URL}/habit-log/${habit_id}`,
+      {},
+      {
+        headers: getAuthHeaders(),
+      }
+    );
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to log habit completion.");
+    console.log("Failed to log habit completion:", error);
     throw error;
   }
 };
@@ -151,8 +142,7 @@ export const fetchHabitLogs = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch habit logs.");
+    console.log("Failed to fetch habit logs:", error);
     throw error;
   }
 };
@@ -160,13 +150,16 @@ export const fetchHabitLogs = async () => {
 /** WATERING LOG **/
 export const logWatering = async (category_id) => {
   try {
-    const resp = await axios.post(`${BASE_URL}/watering/${category_id}`, {}, {
-      headers: getAuthHeaders(),
-    });
+    const resp = await axios.post(
+      `${BASE_URL}/watering/${category_id}`,
+      {},
+      {
+        headers: getAuthHeaders(),
+      }
+    );
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to log watering.");
+    console.log("Failed to log watering:", error);
     throw error;
   }
 };
@@ -178,8 +171,7 @@ export const fetchWateringLogs = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch watering logs.");
+    console.log("Failed to fetch watering logs:", error);
     throw error;
   }
 };
@@ -187,26 +179,31 @@ export const fetchWateringLogs = async () => {
 /** PLANT GROWTH **/
 export const fetchCurrentPlantPhase = async (category_id) => {
   try {
-    const resp = await axios.get(`${BASE_URL}/plant/user-category/${category_id}`, {
-      headers: getAuthHeaders(),
-    });
+    const resp = await axios.get(
+      `${BASE_URL}/plant/user-category/${category_id}`,
+      {
+        headers: getAuthHeaders(),
+      }
+    );
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch plant phase.");
+    console.log("Failed to fetch plant phase:", error);
     throw error;
   }
 };
 
 export const upgradePlantPhase = async (category_id) => {
   try {
-    const resp = await axios.patch(`${BASE_URL}/plant/user-category/${category_id}`, {}, {
-      headers: getAuthHeaders(),
-    });
+    const resp = await axios.patch(
+      `${BASE_URL}/plant/user-category/${category_id}`,
+      {},
+      {
+        headers: getAuthHeaders(),
+      }
+    );
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to upgrade plant phase.");
+    console.log("Failed to upgrade plant phase:", error);
     throw error;
   }
 };
@@ -214,13 +211,16 @@ export const upgradePlantPhase = async (category_id) => {
 /** CHATBOT **/
 export const chatWithBot = async (user_message) => {
   try {
-    const resp = await axios.post(`${BASE_URL}/chatbot`, { user_message }, {
-      headers: getAuthHeaders(),
-    });
+    const resp = await axios.post(
+      `${BASE_URL}/chatbot`,
+      { user_message },
+      {
+        headers: getAuthHeaders(),
+      }
+    );
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to chat with bot.");
+    console.log("Failed to chat with bot:", error);
     throw error;
   }
 };
@@ -232,8 +232,7 @@ export const fetchChatHistory = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch chat history.");
+    console.log("Failed to fetch chat history:", error);
     throw error;
   }
 };
@@ -246,8 +245,7 @@ export const createTimeCapsule = async (capsuleData) => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to create time capsule.");
+    console.log("Failed to create time capsule:", error);
     throw error;
   }
 };
@@ -259,21 +257,23 @@ export const fetchTimeCapsules = async () => {
     });
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to fetch time capsules.");
+    console.log("Failed to fetch time capsules:", error);
     throw error;
   }
 };
 
 export const unlockTimeCapsule = async (capsule_id) => {
   try {
-    const resp = await axios.patch(`${BASE_URL}/time-capsule/${capsule_id}`, {}, {
-      headers: getAuthHeaders(),
-    });
+    const resp = await axios.patch(
+      `${BASE_URL}/time-capsule/${capsule_id}`,
+      {},
+      {
+        headers: getAuthHeaders(),
+      }
+    );
     return resp.data;
   } catch (error) {
-    console.error(error);
-    alert("Failed to unlock time capsule.");
+    console.log("Failed to unlock time capsule:", error);
     throw error;
   }
 };
