@@ -145,6 +145,22 @@ export const deleteHabit = async (habit_id) => {
   }
 };
 
+export const updateHabit = async (habitId, updatedData) => {
+  try {
+    const response = await axios.patch(
+      `${BASE_URL}/habit/${habitId}`,
+      updatedData,
+      {
+        headers: getAuthHeaders(),
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Failed to update habit:", error);
+    throw error;
+  }
+};
+
 /** HABIT LOGS **/
 export const logHabitCompletion = async (habit_id) => {
   try {

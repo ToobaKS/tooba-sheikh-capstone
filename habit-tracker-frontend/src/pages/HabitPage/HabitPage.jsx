@@ -8,11 +8,14 @@ import {
   logHabitCompletion,
   fetchTodayLogs,
   addHabit,
+  deleteHabit,
+  updateHabit,
 } from "../../util/api";
 import HabitHeader from "../../components/HabitHeader/HabitHeader";
 import HabitList from "../../components/HabitList/HabitList";
 import EmptyState from "../../components/EmptyState/EmptyState";
 import HabitForm from "../../components/HabitForm/HabitForm";
+import DeleteHabitModal from "../../components/DeleteHabitModal/DeleteHabitModal";
 import { X } from "lucide-react";
 import "./HabitPage.scss";
 
@@ -21,6 +24,10 @@ function HabitPage() {
   const [habits, setHabits] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [habitToDelete, setHabitToDelete] = useState(null);
+  const [habitToEdit, setHabitToEdit] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const refreshProgress = async (userCategoryId) => {
     if (!userCategoryId) return;
@@ -46,6 +53,23 @@ function HabitPage() {
     }
   };
 
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteHabit(habitToDelete);
+      await loadData();
+      await refreshProgress(categoryInfo.userCategoryId);
+      setShowDeleteModal(false);
+      setHabitToDelete(null);
+    } catch (err) {
+      console.log("Error deleting habit:", err);
+    }
+  };
+
+  const handleDeleteClick = (habitId) => {
+    setHabitToDelete(habitId);
+    setShowDeleteModal(true);
+  };
+
   const handleAddHabit = async (habitData) => {
     try {
       const payload = {
@@ -59,6 +83,26 @@ function HabitPage() {
       setShowAddModal(false);
     } catch (err) {
       console.log("Error adding habit:", err);
+    }
+  };
+
+  const handleEditClick = (habit) => {
+    setHabitToEdit(habit);
+    setShowEditModal(true);
+  };
+
+  const handleUpdateHabit = async (updatedData) => {
+    try {
+      await updateHabit(habitToEdit.id, {
+        description: updatedData.description,
+      });
+
+      await loadData();
+      await refreshProgress(categoryInfo.userCategoryId);
+      setShowEditModal(false);
+      setHabitToEdit(null);
+    } catch (err) {
+      console.log("Error updating habit:", err);
     }
   };
 
@@ -106,37 +150,67 @@ function HabitPage() {
         />
       )}
 
+      <DeleteHabitModal
+        isOpen={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+        onConfirm={handleConfirmDelete}
+      />
+
+      <Modal
+        isOpen={showEditModal}
+        onRequestClose={() => setShowEditModal(false)}
+        className="habit-modal"
+        overlayClassName="habit-modal__overlay"
+        ariaHideApp={false}
+      >
+        <button
+          className="habit-modal__close"
+          onClick={() => setShowEditModal(false)}
+          aria-label="Close modal"
+        >
+          <X size={24} />
+        </button>
+
+        <h2 className="habit-modal__title">Edit Habit</h2>
+        <HabitForm
+          onSubmit={handleUpdateHabit}
+          onClose={() => setShowEditModal(false)}
+          initialValues={{ description: habitToEdit?.description }}
+        />
+      </Modal>
+      <Modal
+        isOpen={showAddModal}
+        onRequestClose={() => setShowAddModal(false)}
+        className="habit-modal"
+        overlayClassName="habit-modal__overlay"
+        ariaHideApp={false}
+      >
+        <button
+          className="habit-modal__close"
+          onClick={() => setShowAddModal(false)}
+          aria-label="Close modal"
+        >
+          <X size={24} />
+        </button>
+
+        <h2 className="habit-modal__title">Add a Habit</h2>
+
+        <HabitForm
+          onSubmit={handleAddHabit}
+          onClose={() => setShowAddModal(false)}
+        />
+      </Modal>
       <div className="habit-page__content">
         <section className="habit-page__plant-container">plant</section>
 
         <section className="habit-page__list">
-          <Modal
-            isOpen={showAddModal}
-            onRequestClose={() => setShowAddModal(false)}
-            className="habit-modal"
-            overlayClassName="habit-modal__overlay"
-            ariaHideApp={false}
-          >
-            <button
-              className="habit-modal__close"
-              onClick={() => setShowAddModal(false)}
-              aria-label="Close modal"
-            >
-              <X size={24} />
-            </button>
-            <HabitForm
-              onSubmit={handleAddHabit}
-              onClose={() => setShowAddModal(false)}
-            />
-          </Modal>
-
           {habits.length > 0 ? (
             <>
               <HabitList
                 habits={habits}
                 onToggleComplete={handleToggleComplete}
-                onEdit={() => {}}
-                onDelete={() => {}}
+                onEdit={handleEditClick}
+                onDelete={handleDeleteClick}
               />
 
               <button
