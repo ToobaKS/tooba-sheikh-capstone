@@ -1,30 +1,31 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Modal from "react-modal";
 import {
   fetchHabits,
   fetchCategoryInfo,
   fetchCategoryProgress,
   logHabitCompletion,
   fetchTodayLogs,
+  addHabit,
 } from "../../util/api";
 import HabitHeader from "../../components/HabitHeader/HabitHeader";
 import HabitList from "../../components/HabitList/HabitList";
 import EmptyState from "../../components/EmptyState/EmptyState";
+import HabitForm from "../../components/HabitForm/HabitForm";
+import { X } from "lucide-react";
 import "./HabitPage.scss";
 
 function HabitPage() {
   const { categoryName } = useParams();
   const [habits, setHabits] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState(null);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const handleToggleComplete = async (habit_id) => {
     try {
       await logHabitCompletion(habit_id);
-
-      const updatedHabits = await fetchHabits(categoryName);
-      console.log("habit.completed_today", updatedHabits);
-
-      setHabits(updatedHabits);
+      await loadData();
 
       if (categoryInfo?.userCategoryId) {
         const updatedProgress = await fetchCategoryProgress(
@@ -40,6 +41,16 @@ function HabitPage() {
     }
   };
 
+  const handleAddHabit = async (habitData) => {
+    try {
+      await addHabit(habitData, categoryInfo.userCategoryId);
+      await loadData();
+      setShowAddModal(false);
+    } catch (err) {
+      console.log("Error adding habit:", err);
+    }
+  };
+
   const loadData = async () => {
     try {
       const habitData = await fetchHabits(categoryName);
@@ -49,9 +60,9 @@ function HabitPage() {
         ...habit,
         completed_today: todayLogs.includes(habit.id),
       }));
-  
+
       setHabits(habitsWithStatus);
-  
+
       const infoData = await fetchCategoryInfo(categoryName);
       setCategoryInfo({
         ...infoData,
@@ -80,13 +91,42 @@ function HabitPage() {
         <section className="habit-page__plant-container">plant</section>
 
         <section className="habit-page__list">
-          {habits.length > 0 ? (
-            <HabitList
-              habits={habits}
-              onToggleComplete={handleToggleComplete}
-              onEdit={() => {}}
-              onDelete={() => {}}
+
+          <Modal
+            isOpen={showAddModal}
+            onRequestClose={() => setShowAddModal(false)}
+            className="habit-modal"
+            overlayClassName="habit-modal__overlay"
+            ariaHideApp={false}
+          >
+            <button
+              className="habit-modal__close"
+              onClick={() => setShowAddModal(false)}
+              aria-label="Close modal"
+            >
+              <X size={24} />
+            </button>
+            <HabitForm
+              onSubmit={handleAddHabit}
+              onClose={() => setShowAddModal(false)}
             />
+          </Modal>
+          {habits.length > 0 ? (
+            <>
+              <HabitList
+                habits={habits}
+                onToggleComplete={handleToggleComplete}
+                onEdit={() => {}}
+                onDelete={() => {}}
+              />
+
+              <button
+                className="habit-list__add-btn"
+                onClick={() => setShowAddModal(true)}
+              >
+                + Add Habit
+              </button>
+            </>
           ) : (
             <EmptyState />
           )}

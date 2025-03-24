@@ -1,18 +1,24 @@
 @use "../../styles/partials/global" as *;
 
-.habit-page {
+.habit-page { 
   width: 100%;
   height: 100%;
-  background-color: $background-color-three;
+  background-image: url("../../assets/backgrounds/6.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  @include display-flex(column, center, start);
 
   &__content {
+    width: 100%;
+    height: 100%;
     padding: 20px 40px;
-    display: flex;
+    @include display-flex(row, center, start);
   }
 
   &__plant-container {
     width: 50%;
-   // width: 200px;
     padding: 1rem;
   }
 
@@ -32,5 +38,59 @@
     margin-top: 2rem;
     overflow-y: auto;
     max-height: 65vh;
+  }
+}
+
+.habit-list__add-btn {
+  margin-top: 1.5rem;
+  align-self: flex-start;
+  background-color: #3a805a;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #326b4c;
+  }
+}
+
+.habit-modal__overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.habit-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: 1001;
+}
+
+.habit-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #555;
+  cursor: pointer;
+  z-index: 1002;
+
+  &:hover {
+    color: #000;
   }
 }
