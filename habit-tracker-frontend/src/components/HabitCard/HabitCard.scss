@@ -14,6 +14,15 @@
   &--done {
     opacity: 0.6;
     text-decoration: line-through;
+
+    .habit-card__title {
+      text-decoration: line-through;
+      color: #3a805a;
+    }
+
+    .habit-card__desc {
+      color: #7fa58a;
+    }
   }
 
   &__left {

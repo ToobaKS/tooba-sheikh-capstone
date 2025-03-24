@@ -162,6 +162,21 @@ export const logHabitCompletion = async (habit_id) => {
   }
 };
 
+export const fetchTodayLogs = async (categoryName) => {
+  try {
+    const resp = await axios.get(
+      `${BASE_URL}/habit-log/today/${categoryName}`,
+      {
+        headers: getAuthHeaders(),
+      }
+    );
+    return resp.data;
+  } catch (error) {
+    console.log("Failed to fetch habit logs:", error);
+    throw error;
+  }
+};
+
 export const fetchHabitLogs = async () => {
   try {
     const resp = await axios.get(`${BASE_URL}/habit-log`, {
