@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
+import placeholder from "../../assets/gifs/48.gif";
 import {
   fetchHabits,
   fetchCategoryInfo,
@@ -71,6 +72,11 @@ function HabitPage() {
   };
 
   const handleAddHabit = async (habitData) => {
+    if (!categoryInfo?.userCategoryId) {
+      console.error("No category ID available for adding habit");
+      return;
+    }
+
     try {
       const payload = {
         ...habitData,
@@ -81,6 +87,7 @@ function HabitPage() {
       await loadData();
       await refreshProgress(categoryInfo.userCategoryId);
       setShowAddModal(false);
+      console.log("✅ Modal should close");
     } catch (err) {
       console.log("Error adding habit:", err);
     }
@@ -110,15 +117,14 @@ function HabitPage() {
     try {
       const habitData = await fetchHabits(categoryName);
       const todayLogs = await fetchTodayLogs(categoryName);
+      const infoData = await fetchCategoryInfo(categoryName);
 
       const habitsWithStatus = habitData.map((habit) => ({
         ...habit,
         completed_today: todayLogs.includes(habit.id),
       }));
       setHabits(habitsWithStatus);
-
-      const infoData = await fetchCategoryInfo(categoryName);
-      const userCategoryId = habitData[0]?.user_category_id || null;
+      const userCategoryId = infoData.id || null;
 
       let progress = 0;
       if (userCategoryId) {
@@ -201,7 +207,7 @@ function HabitPage() {
         />
       </Modal>
       <div className="habit-page__content">
-        <section className="habit-page__plant-container">plant</section>
+        <section className="habit-page__plant-container"><img className="placeholder" src={placeholder} alt="" /></section>
 
         <section className="habit-page__list">
           {habits.length > 0 ? (
@@ -221,7 +227,11 @@ function HabitPage() {
               </button>
             </>
           ) : (
-            <EmptyState />
+            <EmptyState
+              message="Nothing planted yet 🌱"
+              cta="Start growing!"
+              onClick={() => setShowAddModal(true)}
+            />
           )}
         </section>
       </div>

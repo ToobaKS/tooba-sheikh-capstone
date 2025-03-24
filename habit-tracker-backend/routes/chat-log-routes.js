@@ -6,7 +6,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .post(protect, chatLogController.chatWithBot) // Send message to chatbot
-  .get(protect, chatLogController.getChatHistory); // Get chat history
+  .post(protect, chatLogController.chatWithBot)
+  .get(protect, chatLogController.getChatHistory);
 
 export default router;

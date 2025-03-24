@@ -123,13 +123,11 @@ export const getCategoryProgress = async (req, res) => {
   const { category_id } = req.params;
 
   try {
-    // Count total habits in the category
     const totalHabits = await knex("habits")
       .where({ user_category_id: category_id })
       .count("id as count")
       .first();
 
-    // Count completed habits for today
     const completedHabits = await knex("habit_log")
       .join("habits", "habit_log.habit_id", "habits.id")
       .whereRaw("DATE(habit_log.completion_date) = CURDATE()")

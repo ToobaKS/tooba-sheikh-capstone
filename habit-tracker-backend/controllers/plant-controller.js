@@ -80,7 +80,6 @@ export const upgradePlantPhase = async (req, res) => {
   const { category_id } = req.params;
 
   try {
-    // Get user’s current plant phase
     const userCategory = await knex("user_categories")
       .join("categories", "user_categories.category_id", "categories.id")
       .where("user_categories.id", category_id)
@@ -92,20 +91,17 @@ export const upgradePlantPhase = async (req, res) => {
       return res.status(404).json({ error: "Category not found." });
     }
 
-    // Count watering streak
     const wateringStreak = await knex("watering_log")
       .where({ user_category_id: category_id, user_id })
       .count("id as streak")
       .first();
 
     if (wateringStreak.streak < 5) {
-      // Example threshold for upgrade
       return res
         .status(400)
         .json({ error: "Not enough watering days to upgrade phase." });
     }
 
-    // Get next phase of plant
     const nextPhase = await knex("plant_phases")
       .where("plant_id", userCategory.plant_id)
       .where("phase_number", ">", userCategory.plant_phase)
@@ -118,7 +114,6 @@ export const upgradePlantPhase = async (req, res) => {
         .json({ message: "Plant has already fully grown!" });
     }
 
-    // Upgrade plant phase in user_categories
     await knex("user_categories")
       .where({ id: category_id, user_id })
       .update({ plant_phase: nextPhase.phase_number });

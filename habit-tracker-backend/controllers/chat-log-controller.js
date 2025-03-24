@@ -27,7 +27,6 @@ async function chat(text) {
       contents: [{ parts: [{ text }] }],
     });
 
-    // Extract the response text
     const botResponse =
       result?.response?.candidates?.[0]?.content?.parts?.[0]?.text ||
       "I'm not sure how to respond.";
@@ -43,17 +42,15 @@ async function chat(text) {
  */
 export const chatWithBot = async (req, res) => {
   const { user_message } = req.body;
-  const user_id = req.user.id; // Extract user ID from JWT
+  const user_id = req.user.id; 
 
   if (!user_message) {
     return res.status(400).json({ error: "User message is required." });
   }
 
   try {
-    // Send request to Gemini API
     const bot_response = await chat(user_message);
 
-    // Save chat to the database
     const [id] = await knex("chat_log").insert({
       user_id,
       user_message,

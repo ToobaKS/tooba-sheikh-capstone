@@ -11,7 +11,6 @@ export const getHabitsByCategory = async (req, res) => {
   const { category_name } = req.params;
 
   try {
-    // Find the category ID from name
     const category = await knex("category")
       .whereRaw("LOWER(name) = LOWER(?)", [category_name])
       .first();
@@ -20,7 +19,6 @@ export const getHabitsByCategory = async (req, res) => {
       return res.status(404).json({ error: "Category not found." });
     }
 
-    // Find the user's category entry
     const userCategory = await knex("user_categories")
       .where({ user_id, category_id: category.id })
       .first();
@@ -29,7 +27,6 @@ export const getHabitsByCategory = async (req, res) => {
       return res.status(400).json({ error: "User is not in this category." });
     }
 
-    // Retrieve all habits tied to this category for the user
     const habits = await knex("habits").where({
       user_category_id: userCategory.id,
     });
@@ -79,14 +76,12 @@ export const deleteHabit = async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Find the habit
     const habit = await knex("habits").where({ id }).first();
 
     if (!habit) {
       return res.status(404).json({ error: "Habit not found." });
     }
 
-    // Check if user owns this habit
     const userCategory = await knex("user_categories")
       .where({ id: habit.user_category_id, user_id })
       .first();
@@ -116,14 +111,12 @@ export const updateHabit = async (req, res) => {
   const { name, description } = req.body;
 
   try {
-    // Find the habit
     const habit = await knex("habits").where({ id }).first();
 
     if (!habit) {
       return res.status(404).json({ error: "Habit not found." });
     }
 
-    // Ensure the user owns this habit
     const userCategory = await knex("user_categories")
       .where({ id: habit.user_category_id, user_id })
       .first();
@@ -134,7 +127,6 @@ export const updateHabit = async (req, res) => {
         .json({ error: "Unauthorized to update this habit." });
     }
 
-    // Update habit fields
     const updatedFields = {};
     if (name) updatedFields.name = name;
     if (description) updatedFields.description = description;

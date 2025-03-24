@@ -6,13 +6,13 @@ const router = express.Router();
 
 router
   .route("/:category_name")
-  .get(protect, habitController.getHabitsByCategory); // Get all habits for a category
+  .get(protect, habitController.getHabitsByCategory); 
 
-router.route("/").post(protect, habitController.createHabit); // Create a habit
+router.route("/").post(protect, habitController.createHabit); 
 
 router
   .route("/:id")
   .delete(protect, habitController.deleteHabit)
-  .patch(protect, habitController.updateHabit); // Update habit name/description
+  .patch(protect, habitController.updateHabit);
 
 export default router;

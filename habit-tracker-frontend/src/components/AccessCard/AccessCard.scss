@@ -3,10 +3,9 @@
 .access-card {
   background-color: $font-color-one;
   padding: 2.5rem;
-  border-radius: 40px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  min-width: 450px;
-  //min-height: 75%;
+  border-radius: 2.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  min-width: 28.125rem;
   text-align: center;
   color: $secondary-card-color-one;
   display: flex;
@@ -15,7 +14,7 @@
   align-items: center;
 
   &__header {
-    width:100%;
+    width: 100%;
     @include display-flex(row, space-between, center);
   }
 
@@ -26,7 +25,7 @@
 
   &__title {
     font-family: "Comfortaa";
-    @include font(80px, 50px, 900);
+    @include font(5rem, 3.125rem, 900);
     font-size: 1.8rem;
 
     &:hover {
@@ -48,10 +47,10 @@
   }
 
   &__icon {
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
     transition: transform 0.5s ease;
-    cursor: pointer; 
+    cursor: pointer;
 
     &:hover {
       color: $accent-color-ten;

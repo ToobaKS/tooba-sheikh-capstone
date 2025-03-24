@@ -11,7 +11,6 @@ export const logHabitCompletion = async (req, res) => {
   const { habit_id } = req.params;
 
   try {
-    // Ensure the habit exists and belongs to the user
     const habit = await knex("habits")
       .join("user_categories", "habits.user_category_id", "user_categories.id")
       .where("habits.id", habit_id)
@@ -24,7 +23,6 @@ export const logHabitCompletion = async (req, res) => {
 
     const today = new Date().toISOString().split("T")[0];
 
-    // Check if this habit was already logged today
     const existingLog = await knex("habit_log")
       .where({ habit_id })
       .whereRaw("DATE(completion_date) = ?", [today])
@@ -34,7 +32,6 @@ export const logHabitCompletion = async (req, res) => {
       return res.status(400).json({ error: "Habit already logged today." });
     }
 
-    // Insert new log
     const [log_id] = await knex("habit_log").insert({
       habit_id,
       completion_date: knex.fn.now(),
@@ -118,16 +115,16 @@ export const getHabitLogs = async (req, res) => {
  */
 export const getHabitLogsByWeek = async (req, res) => {
   const user_id = req.user.id;
-  const weekOffset = parseInt(req.query.weekOffset) || 0; // Default to current week
+  const weekOffset = parseInt(req.query.weekOffset) || 0;
 
   try {
     const startDate = new Date();
-    startDate.setDate(startDate.getDate() - (6 + weekOffset * 7)); // Move back `weekOffset` weeks
-    startDate.setHours(0, 0, 0, 0); // Start of the day
+    startDate.setDate(startDate.getDate() - (6 + weekOffset * 7));
+    startDate.setHours(0, 0, 0, 0);
 
     const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + 6); // 7-day range
-    endDate.setHours(23, 59, 59, 999); // End of the day
+    endDate.setDate(endDate.getDate() + 6);
+    endDate.setHours(23, 59, 59, 999);
 
     const habitLogs = await knex("habit_log")
       .join("habits", "habit_log.habit_id", "habits.id")

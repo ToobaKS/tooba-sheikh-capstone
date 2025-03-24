@@ -26,7 +26,7 @@ function LoginForm() {
     try {
       const response = await loginUser(formData);
       console.log("Login successful:", response);
-      navigate("/home"); // or wherever you want to send them!
+      navigate("/home");
     } catch (err) {
       console.error("Login failed:", err);
     }
