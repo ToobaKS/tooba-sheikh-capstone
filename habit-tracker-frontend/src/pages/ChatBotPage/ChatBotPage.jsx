@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import ChatCard from "../../components/ChatCard/ChatCard";
 import { fetchChatHistory, chatWithBot } from "../../util/api";
+import plant from "../../assets/svg/31.svg";
+import table from "../../assets/images/34.png";
+import backgroundDecor1 from "../../assets/svg/79.svg";
+import backgroundDecor2 from "../../assets/svg/68.svg";
+import backgroundDecor3 from "../../assets/svg/78.svg";
 import "./ChatBotPage.scss";
 
 function ChatBotPage() {
@@ -57,15 +62,41 @@ function ChatBotPage() {
   };
 
   return (
-    <main className="chatbot-page">
-      <h1 className="chatbot-page__title">Croot - AI companion</h1>
-      <ChatCard
-        chatHistory={chatHistory}
-        newMessage={newMessage}
-        setNewMessage={setNewMessage}
-        handleSend={handleSend}
-      />
-    </main>
+    <>
+      <main className="chatbot-page">
+        <aside className="chatbot-page__decor">
+          <img
+            className="chatbot-page__decor-plant"
+            src={plant}
+            alt="Plant on table"
+          />
+          <img className="chatbot-page__decor-table" src={table} alt="Table" />
+          {/* <img
+            className="chatbot-page__decor-autumn"
+            src={backgroundDecor1}
+            alt="Table"
+          /> */}
+          {/* <img
+            className="chatbot-page__decor-leaves"
+            src={backgroundDecor2}
+            alt="Table"
+          /> */}
+          <img
+            className="chatbot-page__decor-heart"
+            src={backgroundDecor3}
+            alt="Table"
+          />
+        </aside>
+        <h1 className="chatbot-page__title">Croot - AI companion</h1>
+        <ChatCard
+          className="chatbot-page__card"
+          chatHistory={chatHistory}
+          newMessage={newMessage}
+          setNewMessage={setNewMessage}
+          handleSend={handleSend}
+        />
+      </main>
+    </>
   );
 }
 

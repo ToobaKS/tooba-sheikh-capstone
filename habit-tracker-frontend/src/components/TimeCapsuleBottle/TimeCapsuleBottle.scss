@@ -1,24 +1,28 @@
 @use "../../styles/partials/global" as *;
 
-.bottle {
-  //width: 120px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.bottle-wrapper {
+  padding-top: 20px;
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 
-  &__image {
-    max-height: 120px;
-    max-width: 120px;
+  &__img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    max-height: 150px;
+    max-width: 160px;
+    animation: float 4s ease-in-out infinite;
   }
 
-  @media (min-width: $tablet-breakpoint) {
-    width: 150px;
-  }
-
-  @media (min-width: $desktop-breakpoint) {
-    width: 180px;
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }
