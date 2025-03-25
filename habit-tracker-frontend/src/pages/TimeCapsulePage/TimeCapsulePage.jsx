@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import TimeCapsuleBottle from "../../components/TimeCapsuleBottle/TimeCapsuleBottle";
 import TimeCapsuleModal from "../../components/TimeCapsuleModal/TimeCapsuleModal";
+import girl from "../../assets/gifs/71.gif";
+import map from "../../assets/images/87.png";
 import Modal from "react-modal";
 import { fetchTimeCapsules, createTimeCapsule } from "../../util/api";
 import "./TimeCapsulePage.scss";
@@ -54,10 +56,10 @@ function TimeCapsulePage() {
 
   return (
     <div className="time-capsule-page">
-      <div>
-        <h1 className="time-capsule-page__title">My Time Capsules</h1>
+      <h1 className="time-capsule-page__title">My Time Capsules</h1>
+      <div className="time-capsule-page__main">
         <form className="time-capsule-page__form" onSubmit={handleFormSubmit}>
-        <h2 className="time-capsule-page__subtitle">Create Capsule:</h2>
+          <h2 className="time-capsule-page__subtitle">Create Capsule:</h2>
           <label className="time-capsule-page__label">Title:</label>
           <input
             type="text"
@@ -93,6 +95,17 @@ function TimeCapsulePage() {
             Create
           </button>
         </form>
+        <div className="time-capsule-page__description">
+          <h3 className="time-capsule-page__description-title">
+            What’s a Time Capsule?
+          </h3>
+          <p className="time-capsule-page__description-text">
+            ✨ <strong>Preserve your present for the future.</strong>
+            <br />
+            Write a message to your future self or someone you love. Choose a
+            date, seal it in a capsule, and return when the time is right. ⏳💌
+          </p>
+        </div>
       </div>
       <div className="time-capsule-page__bottles">
         {capsules.map((capsule, index) => (
@@ -102,12 +115,16 @@ function TimeCapsulePage() {
             index={index}
           />
         ))}
+        <div className="time-capsule-page__decor-wrapper">
+          <img className="time-capsule-page__girl" src={girl} alt="girl" />
+          <img className="time-capsule-page__map" src={map} alt="girl" />
+        </div>
       </div>
 
       <Modal
         isOpen={!!selectedCapsule}
         onRequestClose={closeModal}
-        className="capsule-modal-container"
+        className="capsule-modal__container"
         overlayClassName="capsule-modal__overlay"
       >
         {selectedCapsule && (
