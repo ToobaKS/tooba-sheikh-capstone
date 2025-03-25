@@ -1,4 +1,3 @@
-// TimeCapsulePage.jsx
 import { useEffect, useState } from "react";
 import TimeCapsuleBottle from "../../components/TimeCapsuleBottle/TimeCapsuleBottle";
 import TimeCapsuleModal from "../../components/TimeCapsuleModal/TimeCapsuleModal";
@@ -55,39 +54,52 @@ function TimeCapsulePage() {
 
   return (
     <div className="time-capsule-page">
-      <h1 className="time-capsule-page__title">My Time Capsules</h1>
+      <div>
+        <h1 className="time-capsule-page__title">My Time Capsules</h1>
+        <form className="time-capsule-page__form" onSubmit={handleFormSubmit}>
+        <h2 className="time-capsule-page__subtitle">Create Capsule:</h2>
+          <label className="time-capsule-page__label">Title:</label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            value={formData.title}
+            onChange={handleInputChange}
+            required
+            className="time-capsule-page__input time-capsule-page__input--title"
+          />
 
-      <form className="capsule-form" onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          value={formData.title}
-          onChange={handleInputChange}
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Write your message..."
-          value={formData.message}
-          onChange={handleInputChange}
-          required
-        ></textarea>
-        <input
-          type="date"
-          name="unlock_date"
-          value={formData.unlock_date}
-          onChange={handleInputChange}
-          required
-        />
-        <button type="submit">Create</button>
-      </form>
+          <label className="time-capsule-page__label">Message:</label>
+          <textarea
+            name="message"
+            placeholder="Write your message..."
+            value={formData.message}
+            onChange={handleInputChange}
+            required
+            className="time-capsule-page__input time-capsule-page__input--text"
+          ></textarea>
 
+          <label className="time-capsule-page__label">Unlock Date:</label>
+          <input
+            type="date"
+            name="unlock_date"
+            value={formData.unlock_date}
+            onChange={handleInputChange}
+            required
+            className="time-capsule-page__input time-capsule-page__input--date"
+          />
+
+          <button className="time-capsule-page__button" type="submit">
+            Create
+          </button>
+        </form>
+      </div>
       <div className="time-capsule-page__bottles">
-        {capsules.map((capsule) => (
+        {capsules.map((capsule, index) => (
           <TimeCapsuleBottle
             key={capsule.id}
             onClick={() => handleBottleClick(capsule)}
+            index={index}
           />
         ))}
       </div>

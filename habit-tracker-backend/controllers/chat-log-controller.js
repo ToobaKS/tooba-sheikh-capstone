@@ -20,7 +20,7 @@ async function chat(text) {
         " I will pass in the history of the last few chats to ensure you" + 
         " know whats happening. Also the response will put into a jsx so" + 
         " make sure the effects you use can be rendered in jsx" +
-        " and make plant puns once in a while",
+        " and make plant puns once in a while and the responses should be short until unless its necessary",
     });
 
     const result = await model.generateContent({
